@@ -2,11 +2,12 @@ package com.biswa1045.alumininetwork
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 lateinit var bottomNavigationView:BottomNavigationView
-
+lateinit var ex:TextView
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

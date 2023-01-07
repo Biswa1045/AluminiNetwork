@@ -12,7 +12,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AluminiNetwork"
         tools:targetApi="31">
-
+        <activity
+            android:name=".PrivacyActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
         <activity
             android:name=".ClubsActivity"
             android:exported="false">
@@ -69,7 +75,6 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-
         <activity
             android:name=".MobileActivity"
             android:exported="false">
