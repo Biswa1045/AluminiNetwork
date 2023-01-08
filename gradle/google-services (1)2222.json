@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "286958858924",
+    "project_id": "alumini2-71dda",
+    "storage_bucket": "alumini2-71dda.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:286958858924:android:77a9621ad6c70c96306509",
+        "android_client_info": {
+          "package_name": "com.example.alumini"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "286958858924-0ktovtognpcmjb7g86upestctmrgt70o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAh41G-GvtUS8G7Coy7Uy7g6apKRsEbdLA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "286958858924-0ktovtognpcmjb7g86upestctmrgt70o.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
