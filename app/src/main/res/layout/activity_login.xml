@@ -1,98 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/background"
     tools:context=".login">
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="411dp"
+        android:layout_height="222dp"
+        app:srcCompat="@drawable/login" />
 
-    <com.hbb20.CountryCodePicker
-        android:id="@+id/cpp"
-        android:layout_width="101dp"
-        android:layout_height="46dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.109"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.724" />
+
+    <LinearLayout
+        android:layout_below="@+id/imageView4"
+        android:layout_marginTop="20dp"
+        android:layout_marginHorizontal="15dp"
+        android:gravity="center_horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <androidx.cardview.widget.CardView
+            android:backgroundTint="@color/background"
+
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            app:cardCornerRadius="10dp">
+            <LinearLayout
+                android:padding="5dp"
+                android:background="@drawable/border"
+                android:layout_width="match_parent"
+                android:layout_height="65dp"
+                android:orientation="horizontal">
+                <com.hbb20.CountryCodePicker
+                    android:id="@+id/cpp"
+                    app:ccp_arrowColor="@color/white"
+                    app:ccp_contentColor="@color/white"
+                    android:layout_width="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_height="46dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.109"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.724" />
+                <EditText
+                    android:layout_gravity="center_vertical"
+                    android:id="@+id/editText"
+                    android:background="@null"
+                    android:textColorHint="#A1CFCFD3"
+                    android:textColor="@color/white"
+                    android:layout_width="wrap_content"
+                    android:layout_height="56dp"
+                    android:ems="10"
+                    android:hint="Enter Mobile Number"
+                    android:textStyle="bold"
+                    android:inputType="phone"
+                    android:textSize="16sp"
+                    />
+            </LinearLayout>
+
+
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
 
     <Button
         android:id="@+id/button"
         android:layout_width="276dp"
         android:layout_height="56dp"
-        android:text="send_otp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.481"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.891" />
+        android:background="@drawable/cornor_btn"
+        android:text="Send OTP"
+        android:textStyle="bold"
+        android:textSize="18dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="50dp"
+        android:layout_alignParentBottom="true"
+        />
 
-    <EditText
-        android:id="@+id/editText"
-        android:layout_width="208dp"
-        android:layout_height="56dp"
-        android:ems="10"
-        android:hint="enter_your_no"
-        android:inputType="phone"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.738"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.72" />
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="301dp"
-        android:layout_height="42dp"
-        android:text="      Verify Your Number"
-        android:textColor="@color/purple_500"
-        android:textSize="26sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.473"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.35" />
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="251dp"
-        android:layout_height="31dp"
-        android:text="      your Phone Number"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.481" />
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="284dp"
-        android:layout_height="32dp"
-        android:text="   please enter your Country and"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.436" />
 
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="411dp"
-        android:layout_height="222dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.5"
-        app:srcCompat="@drawable/login" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+</RelativeLayout>
 

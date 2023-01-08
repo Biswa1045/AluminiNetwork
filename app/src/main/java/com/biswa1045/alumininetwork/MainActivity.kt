@@ -37,4 +37,7 @@ class MainActivity : AppCompatActivity() {
             commit()
         }
 
+    override fun onBackPressed() {
+        finishAffinity()
+    }
 }

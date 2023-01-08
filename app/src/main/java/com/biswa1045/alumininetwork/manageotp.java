@@ -3,6 +3,7 @@ package com.biswa1045.alumininetwork;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -31,6 +32,7 @@ public class manageotp extends AppCompatActivity {
     TextView t3;
 
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,8 +40,8 @@ public class manageotp extends AppCompatActivity {
         phonenum=getIntent().getStringExtra("mobile").toString();
         edit=findViewById(R.id.edit);
         butt=findViewById(R.id.butt);
-        TextView textView=findViewById(R.id.t3);
-        textView.setText(phonenum);
+        TextView textView=findViewById(R.id.textView4);
+        textView.setText("Enter the verification code that we just sent to your "+phonenum);
         mAuth= FirebaseAuth.getInstance();
         initiateotp();
 

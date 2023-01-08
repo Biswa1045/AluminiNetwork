@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "286958858924-ll7l90upiljupgmd06pivjuo5jsap4mv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.biswa1045.alumininetwork",
+            "certificate_hash": "697b7fe98622538d1969a50eaf508400bc9b0e1e"
+          }
+        },
+        {
           "client_id": "286958858924-0ktovtognpcmjb7g86upestctmrgt70o.apps.googleusercontent.com",
           "client_type": 3
         }
