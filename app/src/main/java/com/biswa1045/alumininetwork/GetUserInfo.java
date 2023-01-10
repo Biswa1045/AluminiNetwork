@@ -13,6 +13,7 @@ import android.widget.Spinner;
 
 
 import com.google.firebase.FirebaseApp;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 
 import java.util.HashMap;
@@ -29,7 +30,7 @@ public class GetUserInfo extends AppCompatActivity {
     private  static final String KEY_ADD="ADDRESS";
     private  static final String KEY_SPE="SPECIALISATION";
 
-   // private FirebaseFirestore db=FirebaseFirestore.getInstance();
+    private FirebaseFirestore db= FirebaseFirestore.getInstance();
     EditText t2;
     EditText t3;
     EditText t4;
