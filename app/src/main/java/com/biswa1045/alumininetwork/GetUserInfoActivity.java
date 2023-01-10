@@ -55,7 +55,7 @@ String[] spe={"management","web developer","android developer","data analyst","t
         button2=findViewById(R.id.button2);
         t2=findViewById(R.id.t2);
         t3=findViewById(R.id.t3);
-        t4=findViewById(R.id.t4);
+
 
 
         ArrayAdapter<String> adapter=new ArrayAdapter<String>(GetUserInfo.this, android.R.layout.simple_spinner_item,branch);
