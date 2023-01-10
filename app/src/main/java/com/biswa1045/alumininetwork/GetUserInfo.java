@@ -12,7 +12,6 @@ import android.widget.RadioButton;
 import android.widget.Spinner;
 
 
-import com.google.firebase.FirebaseApp;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 
@@ -52,7 +51,7 @@ String[] spe={"management","web developer","android developer","data analyst","t
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_get_user_info2);
+        setContentView(R.layout.activity_get_user_info);
         button2=findViewById(R.id.button2);
         t2=findViewById(R.id.t2);
         t3=findViewById(R.id.t3);
