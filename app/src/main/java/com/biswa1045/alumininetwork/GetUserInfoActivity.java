@@ -12,13 +12,13 @@ import android.widget.RadioButton;
 import android.widget.Spinner;
 
 
-import com.google.firebase.firestore.FirebaseFirestore;
+//import com.google.firebase.firestore.FirebaseFirestore;
 
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class GetUserInfo extends AppCompatActivity {
+  class GetUserInfo extends AppCompatActivity {
     private  static final String TAG="GetUserInfo";
 
     private  static final String KEY_NAME="NAME";
@@ -29,7 +29,7 @@ public class GetUserInfo extends AppCompatActivity {
     private  static final String KEY_ADD="ADDRESS";
     private  static final String KEY_SPE="SPECIALISATION";
 
-    private FirebaseFirestore db= FirebaseFirestore.getInstance();
+    //private FirebaseFirestore db= FirebaseFirestore.getInstance();
     EditText t2;
     EditText t3;
     EditText t4;
