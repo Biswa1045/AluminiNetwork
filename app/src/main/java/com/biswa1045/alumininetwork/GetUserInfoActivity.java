@@ -13,6 +13,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -39,9 +40,7 @@ import java.util.Map;
     private FirebaseFirestore db= FirebaseFirestore.getInstance();
     EditText t2;
     EditText t3;
-    EditText t4;
-    RadioButton radioButton;
-    RadioButton radioButton2;
+    RadioGroup radioGroup;
     Button button2;
     Spinner spinner;
     Spinner spinner2;
@@ -63,7 +62,7 @@ String[] spe={"management","web developer","android developer","data analyst","t
         button2=findViewById(R.id.button2);
         t2=findViewById(R.id.t2);
         t3=findViewById(R.id.t3);
-
+        radioGroup=findViewById(R.id.radioGroup);
 
 
         ArrayAdapter<String> adapter=new ArrayAdapter<String>(GetUserInfoActivity.this, android.R.layout.simple_spinner_item,branch);
@@ -111,19 +110,16 @@ String[] spe={"management","web developer","android developer","data analyst","t
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-              //  public void saveNote(View v){
+
                     String NAME=t2.getText().toString();
                     String EMAIL=t3.getText().toString();
-                    String ADDRESS=t4.getText().toString();
-                    String gender= radioButton.getTransitionName();
-                    String gender2=radioButton2.getTransitionName();
+                   String gender=radioGroup.getTransitionName();
                     String BATCH=spinner.getTransitionName();
                     String BRANCH= spinner2.getTransitionName();
                     String spe= spinner4.getTransitionName();
                     Map<String,Object> note=new HashMap<>();
                     note.put(KEY_NAME,NAME);
                     note.put(KEY_EMAIL,EMAIL);
-                    note.put(KEY_ADD,ADDRESS);
                     note.put(KEY_BATCH,BATCH);
                     note.put(KEY_BRANCH,BRANCH);
                     note.put(KEY_SPE,spe);

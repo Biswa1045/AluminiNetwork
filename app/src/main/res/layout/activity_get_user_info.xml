@@ -177,6 +177,7 @@
                 android:text="female"
                 android:textColor="@color/blue"
                 android:textSize="20sp" />
+
         </RadioGroup>
 
         <TextView
