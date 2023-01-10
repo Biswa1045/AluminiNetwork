@@ -9,11 +9,10 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.Spinner;
 
 
-//import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 
 import java.util.HashMap;
@@ -30,11 +29,10 @@ public class GetUserInfo extends AppCompatActivity {
     private  static final String KEY_ADD="ADDRESS";
     private  static final String KEY_SPE="SPECIALISATION";
 
-    //private FirebaseFirestore db= FirebaseFirestore.getInstance();
+    private FirebaseFirestore db= FirebaseFirestore.getInstance();
     EditText t2;
     EditText t3;
     EditText t4;
-    RadioGroup radioGroup;
     RadioButton radioButton;
     RadioButton radioButton2;
     Button button2;
@@ -45,7 +43,9 @@ String[] branch={"computer science","electronics and telecommunication",
                    "mechanical","electrical","civil","mettalurgy","chemical","production"};
 String[] spe={"management","web developer","android developer","data analyst","testing"
                 ,"networking","other"};
-
+    //String[] year={"1980","1981","1982","1983","1984,1985,1986,1987,1988,1989,1990,1991,1992,1993
+       //          ,1994,1995,1996,1997,1998,1999,2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014
+       //          ,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025,2026,2027,2028,2029,2030};
 
 
     @Override
@@ -55,8 +55,7 @@ String[] spe={"management","web developer","android developer","data analyst","t
         button2=findViewById(R.id.button2);
         t2=findViewById(R.id.t2);
         t3=findViewById(R.id.t3);
-
-        radioGroup=findViewById(R.id.radioGroup);
+        t4=findViewById(R.id.t4);
 
 
         ArrayAdapter<String> adapter=new ArrayAdapter<String>(GetUserInfo.this, android.R.layout.simple_spinner_item,branch);
@@ -111,13 +110,11 @@ String[] spe={"management","web developer","android developer","data analyst","t
             String NAME=t2.getText().toString();
             String EMAIL=t3.getText().toString();
             String ADDRESS=t4.getText().toString();
-            int radioId=radioGroup.getCheckedRadioButtonId();
-            radioButton=findViewById(radioId);
-
+            String gender= radioButton.getTransitionName();
+            String gender2=radioButton2.getTransitionName();
             String BATCH=spinner.getTransitionName();
             String BRANCH= spinner2.getTransitionName();
             String spe= spinner4.getTransitionName();
-            String gender=radioButton.getText().toString();
             Map<String,Object> note=new HashMap<>();
             note.put(KEY_NAME,NAME);
             note.put(KEY_EMAIL,EMAIL);
@@ -126,7 +123,6 @@ String[] spe={"management","web developer","android developer","data analyst","t
             note.put(KEY_BRANCH,BRANCH);
             note.put(KEY_SPE,spe);
             note.put(KEY_GENDER,gender);
-
 
 
         }
