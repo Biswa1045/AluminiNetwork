@@ -55,5 +55,6 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.4'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'
     implementation 'com.hbb20:ccp:2.6.1'
+    implementation 'com.github.yalantis:ucrop:2.2.6'
 
 }

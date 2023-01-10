@@ -12,15 +12,15 @@ import android.widget.RadioButton;
 import android.widget.Spinner;
 
 
-//import com.google.firebase.firestore.FirebaseFirestore;
 
+
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
 import java.util.Map;
 
-  class GetUserInfo extends AppCompatActivity {
+  class GetUserInfoActivity extends AppCompatActivity {
     private  static final String TAG="GetUserInfo";
-
     private  static final String KEY_NAME="NAME";
     private  static final String KEY_EMAIL="EMAIL";
     private  static final String KEY_GENDER="GENDER";
@@ -29,7 +29,7 @@ import java.util.Map;
     private  static final String KEY_ADD="ADDRESS";
     private  static final String KEY_SPE="SPECIALISATION";
 
-    //private FirebaseFirestore db= FirebaseFirestore.getInstance();
+    private FirebaseFirestore db= FirebaseFirestore.getInstance();
     EditText t2;
     EditText t3;
     EditText t4;
@@ -58,7 +58,7 @@ String[] spe={"management","web developer","android developer","data analyst","t
 
 
 
-        ArrayAdapter<String> adapter=new ArrayAdapter<String>(GetUserInfo.this, android.R.layout.simple_spinner_item,branch);
+        ArrayAdapter<String> adapter=new ArrayAdapter<String>(GetUserInfoActivity.this, android.R.layout.simple_spinner_item,branch);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner2.setAdapter(adapter);
         spinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -72,7 +72,7 @@ String[] spe={"management","web developer","android developer","data analyst","t
 
             }
         });
-        ArrayAdapter<String> adapter3=new ArrayAdapter<String>(GetUserInfo.this, android.R.layout.simple_spinner_item,branch);
+        ArrayAdapter<String> adapter3=new ArrayAdapter<String>(GetUserInfoActivity.this, android.R.layout.simple_spinner_item,branch);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -86,7 +86,7 @@ String[] spe={"management","web developer","android developer","data analyst","t
 
             }
         });
-        ArrayAdapter<String> adapter2=new ArrayAdapter<String>(GetUserInfo.this, android.R.layout.simple_spinner_item,spe);
+        ArrayAdapter<String> adapter2=new ArrayAdapter<String>(GetUserInfoActivity.this, android.R.layout.simple_spinner_item,spe);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner4.setAdapter(adapter);
         spinner4.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
