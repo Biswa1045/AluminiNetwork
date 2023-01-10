@@ -1,24 +1,20 @@
+
 package com.biswa1045.alumininetwork;
 
-import androidx.appcompat.app.AppCompatActivity;
+        import androidx.appcompat.app.AppCompatActivity;
+        import android.os.Bundle;
+        import android.view.View;
+        import android.widget.AdapterView;
+        import android.widget.ArrayAdapter;
+        import android.widget.Button;
+        import android.widget.EditText;
+        import android.widget.RadioButton;
+        import android.widget.Spinner;
+        import com.google.firebase.firestore.FirebaseFirestore;
+        import java.util.HashMap;
+        import java.util.Map;
 
-import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.RadioButton;
-import android.widget.Spinner;
-
-
-import com.google.firebase.firestore.FirebaseFirestore;
-
-
-import java.util.HashMap;
-import java.util.Map;
-
-public class GetUserInfo extends AppCompatActivity {
+public class GetUserInfoActivity extends AppCompatActivity {
     private  static final String TAG="GetUserInfo";
 
     private  static final String KEY_NAME="NAME";
@@ -39,13 +35,13 @@ public class GetUserInfo extends AppCompatActivity {
     Spinner spinner;
     Spinner spinner2;
     Spinner spinner4;
-String[] branch={"computer science","electronics and telecommunication",
-                   "mechanical","electrical","civil","mettalurgy","chemical","production"};
-String[] spe={"management","web developer","android developer","data analyst","testing"
-                ,"networking","other"};
+    String[] branch={"computer science","electronics and telecommunication",
+            "mechanical","electrical","civil","mettalurgy","chemical","production"};
+    String[] spe={"management","web developer","android developer","data analyst","testing"
+            ,"networking","other"};
     //String[] year={"1980","1981","1982","1983","1984,1985,1986,1987,1988,1989,1990,1991,1992,1993
-       //          ,1994,1995,1996,1997,1998,1999,2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014
-       //          ,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025,2026,2027,2028,2029,2030};
+    //          ,1994,1995,1996,1997,1998,1999,2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014
+    //          ,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025,2026,2027,2028,2029,2030};
 
 
     @Override
@@ -58,7 +54,7 @@ String[] spe={"management","web developer","android developer","data analyst","t
         t4=findViewById(R.id.t4);
 
 
-        ArrayAdapter<String> adapter=new ArrayAdapter<String>(GetUserInfo.this, android.R.layout.simple_spinner_item,branch);
+        ArrayAdapter<String> adapter=new ArrayAdapter<String>(GetUserInfoActivity.this, android.R.layout.simple_spinner_item,branch);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner2.setAdapter(adapter);
         spinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -72,7 +68,7 @@ String[] spe={"management","web developer","android developer","data analyst","t
 
             }
         });
-        ArrayAdapter<String> adapter3=new ArrayAdapter<String>(GetUserInfo.this, android.R.layout.simple_spinner_item,branch);
+        ArrayAdapter<String> adapter3=new ArrayAdapter<String>(GetUserInfoActivity.this, android.R.layout.simple_spinner_item,branch);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -86,7 +82,7 @@ String[] spe={"management","web developer","android developer","data analyst","t
 
             }
         });
-        ArrayAdapter<String> adapter2=new ArrayAdapter<String>(GetUserInfo.this, android.R.layout.simple_spinner_item,spe);
+        ArrayAdapter<String> adapter2=new ArrayAdapter<String>(GetUserInfoActivity.this, android.R.layout.simple_spinner_item,spe);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner4.setAdapter(adapter);
         spinner4.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -106,25 +102,24 @@ String[] spe={"management","web developer","android developer","data analyst","t
 
             }
         });
-       // public void saveNote(View v) {
-            String NAME=t2.getText().toString();
-            String EMAIL=t3.getText().toString();
-            String ADDRESS=t4.getText().toString();
-            String gender= radioButton.getTransitionName();
-            String gender2=radioButton2.getTransitionName();
-            String BATCH=spinner.getTransitionName();
-            String BRANCH= spinner2.getTransitionName();
-            String spe= spinner4.getTransitionName();
-            Map<String,Object> note=new HashMap<>();
-            note.put(KEY_NAME,NAME);
-            note.put(KEY_EMAIL,EMAIL);
-            note.put(KEY_ADD,ADDRESS);
-            note.put(KEY_BATCH,BATCH);
-            note.put(KEY_BRANCH,BRANCH);
-            note.put(KEY_SPE,spe);
-            note.put(KEY_GENDER,gender);
+        // public void saveNote(View v) {
+        String NAME=t2.getText().toString();
+        String EMAIL=t3.getText().toString();
+        String ADDRESS=t4.getText().toString();
+        String gender= radioButton.getTransitionName();
+        String gender2=radioButton2.getTransitionName();
+        String BATCH=spinner.getTransitionName();
+        String BRANCH= spinner2.getTransitionName();
+        String spe= spinner4.getTransitionName();
+        Map<String,Object> note=new HashMap<>();
+        note.put(KEY_NAME,NAME);
+        note.put(KEY_EMAIL,EMAIL);
+        note.put(KEY_ADD,ADDRESS);
+        note.put(KEY_BATCH,BATCH);
+        note.put(KEY_BRANCH,BRANCH);
+        note.put(KEY_SPE,spe);
+        note.put(KEY_GENDER,gender);
 
 
-        }
     }
-//}
+}
