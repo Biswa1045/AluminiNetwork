@@ -4,195 +4,183 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:fillViewport="true"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    tools:context=".GetUserInfoActivity"
     >
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
+        android:padding="15dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="vertical"
         android:background="@color/background"
-        tools:context=".GetUserInfo">
+       >
 
         <TextView
-            android:id="@+id/textView9"
-            android:layout_width="107dp"
-            android:layout_height="35dp"
-            android:text="NAME"
-            android:textColor="#834dfe"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.114"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.058" />
-
-        <EditText
-            android:id="@+id/t2"
-            android:layout_width="297dp"
-            android:layout_height="62dp"
-            android:cursorVisible="true"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="Name"
-            android:textColor="#834dfe"
-            android:textSize="24sp"
-            android:visibility="visible"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.307"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.133" />
-
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Details"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:textSize="22dp"/>
+        <LinearLayout
+            android:layout_marginTop="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/border"
+            android:orientation="horizontal">
+            <EditText
+                android:layout_gravity="center_vertical"
+                android:id="@+id/name"
+                android:layout_width="match_parent"
+                android:background="@null"
+                android:layout_height="match_parent"
+                android:cursorVisible="true"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:hint="Name"
+                android:textColorHint="#8AFFFFFF"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:visibility="visible"
+                android:layout_marginLeft="15dp"
+                 />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/border"
+            android:orientation="horizontal">
+            <EditText
+                android:layout_gravity="center_vertical"
+                android:id="@+id/gmail"
+                android:layout_width="match_parent"
+                android:background="@null"
+                android:layout_height="match_parent"
+                android:cursorVisible="true"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:hint="Gmail"
+                android:textColorHint="#8AFFFFFF"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:visibility="visible"
+                android:layout_marginLeft="15dp"
+                />
+        </LinearLayout>
         <TextView
-            android:id="@+id/textView10"
-            android:layout_width="112dp"
-            android:layout_height="39dp"
-            android:text="GMAIL"
-            android:textColor="@color/blue"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.117"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.23" />
-
-        <EditText
-            android:id="@+id/t3"
-            android:layout_width="280dp"
-            android:layout_height="67dp"
-            android:ems="10"
-            android:hint="Email"
-            android:inputType="textEmailAddress"
-            android:textColor="@color/blue"
-            android:textColorHint="@color/blue"
-            android:textSize="24sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.267"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.317" />
-
-        <Spinner
-            android:id="@+id/spinner"
-            android:layout_width="228dp"
-            android:layout_height="55dp"
-            android:visibility="visible"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.18"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.651" />
-
-        <TextView
-            android:id="@+id/textView12"
-            android:layout_width="168dp"
-            android:layout_height="49dp"
-            android:text="passout batch"
-            android:textColor="@color/blue"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.144"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.601" />
-
-        <TextView
-            android:id="@+id/textView14"
-            android:layout_width="152dp"
-            android:layout_height="42dp"
-            android:text="  branch"
-            android:textColor="@color/blue"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.135"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.708" />
-
-        <Spinner
-            android:id="@+id/spinner2"
-            android:layout_width="316dp"
-            android:layout_height="59dp"
-            android:visibility="visible"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.368"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.778" />
-
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="247dp"
-            android:layout_height="53dp"
-            android:layout_marginTop="57dp"
-            android:text="Submit"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/spinner4" />
-
-        <Spinner
-            android:id="@+id/spinner4"
-            android:layout_width="222dp"
-            android:layout_height="60dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.793"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.871" />
-
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18dp"
+            android:textColor="@color/white"
+            android:textStyle="normal"
+            android:text="Gender"
+            android:layout_marginTop="20dp"/>
         <RadioGroup
-            android:id="@+id/radioGroup"
-            android:layout_width="337dp"
-            android:layout_height="142dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.472"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.47">
+            android:id="@+id/gender_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
             <RadioButton
-                android:id="@+id/radioButton5"
+                android:id="@+id/male"
+                android:layout_weight="2"
                 android:layout_width="match_parent"
-                android:layout_height="71dp"
+                android:layout_height="wrap_content"
                 android:text="male"
                 android:textColor="@color/blue"
                 android:textSize="20sp" />
 
             <RadioButton
-                android:id="@+id/radioButton6"
+                android:layout_weight="1"
+                android:id="@+id/female"
                 android:layout_width="match_parent"
-                android:layout_height="68dp"
+                android:layout_height="wrap_content"
                 android:text="female"
                 android:textColor="@color/blue"
                 android:textSize="20sp" />
 
         </RadioGroup>
+        <LinearLayout
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Passout Batch"
+                android:layout_gravity="center_vertical"
+                android:textColor="#80FFFFFF"
+                android:textSize="20sp"
+              />
+            <Spinner
+                android:padding="10dp"
+                android:background="@drawable/border"
+                android:layout_marginLeft="10dp"
+                android:id="@+id/batch"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:visibility="visible"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Branch"
+                android:layout_gravity="center_vertical"
+                android:textColor="#80FFFFFF"
+                android:textSize="20sp"
+                />
+            <Spinner
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="101dp"
-            android:layout_height="32dp"
-            android:text="Specialisation"
-            android:textColor="@color/blue"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.112"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.854" />
+                android:padding="10dp"
+                android:background="@drawable/border"
+                android:layout_marginLeft="10dp"
+                android:id="@+id/branch"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:visibility="visible"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginTop="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:background="@drawable/border"
+            android:orientation="horizontal">
+            <EditText
+                android:layout_gravity="center_vertical"
+                android:id="@+id/address"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:cursorVisible="true"
+                android:ems="10"
+                android:hint="Address"
+                android:background="@null"
+                android:inputType="textMultiLine"
+                android:textColorHint="#80FFFFFF"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:visibility="visible"
+                android:layout_marginLeft="15dp"
+                />
+        </LinearLayout>
+        <Button
+            android:id="@+id/submit"
+            android:layout_width="247dp"
+            android:layout_height="53dp"
+            android:layout_marginTop="57dp"
+            android:text="Submit"
+            android:background="@drawable/cornor_btn"
+            android:layout_gravity="center_horizontal"/>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
     </ScrollView>

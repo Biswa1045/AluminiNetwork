@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,9 +18,13 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthOptions;
 import com.google.firebase.auth.PhoneAuthProvider;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.concurrent.TimeUnit;
 
@@ -29,8 +34,6 @@ public class manageotp extends AppCompatActivity {
     String phonenum;
     FirebaseAuth mAuth;
     String otpid;
-    TextView t3;
-
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -98,14 +101,46 @@ public class manageotp extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
+                            FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+                            FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+                            if (firebaseUser != null){
+                                String uid = firebaseUser.getUid().toString();
+                                data_check(uid);
+                            }else{
+                                Toast.makeText(manageotp.this, "signin error", Toast.LENGTH_SHORT).show();
 
-                            startActivity(new Intent(manageotp.this,MainActivity.class));
-                            finish();
+                            }
+
                         } else {
                             Toast.makeText(manageotp.this, "signin error", Toast.LENGTH_SHORT).show();
 
                         }
                     }
                 });
+    }
+
+    private void data_check(String uid){
+        FirebaseFirestore rootRef = FirebaseFirestore.getInstance();
+        DocumentReference docIdRef = rootRef.collection("User").document(uid);
+        docIdRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if (document.exists()) {
+                        startActivity(new Intent(manageotp.this,MainActivity.class));
+                        finish();
+                    } else {
+                        startActivity(new Intent(manageotp.this,GetUserInfoActivity.class));
+                        finish();
+                    //    Log.d(TAG, "Document does not exist!");
+                    }
+                } else {
+                    Toast.makeText(manageotp.this, "Please try again later", Toast.LENGTH_SHORT).show();
+                 //   Log.d(TAG, "Failed with: ", task.getException());
+                }
+            }
+        });
+
     }
 }

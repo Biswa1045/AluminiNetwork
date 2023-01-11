@@ -7,6 +7,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import java.io.File;
@@ -15,10 +16,28 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
+
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.OnProgressListener;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 import com.yalantis.ucrop.UCrop;
 public class UploadImageActivity extends AppCompatActivity {
     private final int PICK_IMAGE_REQUEST = 22;
     private final String SAMPLE_CROPPED_IMG = "CropFact";
+    FirebaseStorage storage;
+    private FirebaseFirestore db;
+    StorageReference storageReference;
+    private FirebaseUser firebaseUser;
+    ImageView img;
+    String firebase_img_uri;
+    Uri filePath,imguri_crped;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,7 +77,7 @@ public class UploadImageActivity extends AppCompatActivity {
         startActivityForResult(Intent.createChooser(intent, "Select Image from here..."), PICK_IMAGE_REQUEST);
     }
 
-   /* @Override
+    @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode,resultCode,data);
 
@@ -78,25 +97,7 @@ public class UploadImageActivity extends AppCompatActivity {
 
 
     }
-    private void uploadImage()
-    {
-        DatabaseReference databaseReference= FirebaseDatabase.getInstance().getReference("Facts_image");
-        databaseReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-
-                count = Long.parseLong(String.valueOf(snapshot.getChildrenCount()));
-
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-
-
-
-
+  /*  private void uploadImage() {
         if (imguri_crped != null) {
             // Code for showing progressDialog while uploading
             ProgressDialog progressDialog
@@ -107,12 +108,7 @@ public class UploadImageActivity extends AppCompatActivity {
             SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault());
             String currentDateandTime = sdf.format(new Date());
             firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-
-            // Defining the child of storageReference
-            StorageReference ref = storageReference.child("uploads").child(firebaseUser.getUid()+"_"+currentDateandTime+".jpg");
-
-            // adding listeners on upload
-            // or failure of image
+            StorageReference ref = storageReference.child("posts").child(firebaseUser.getUid()+"_"+currentDateandTime+".jpg");
             ref.putFile(imguri_crped).addOnSuccessListener(
                             new OnSuccessListener<UploadTask.TaskSnapshot>() {
                                 @Override
@@ -124,14 +120,16 @@ public class UploadImageActivity extends AppCompatActivity {
                                         public void onSuccess(Uri uri) {
                                             firebase_img_uri = uri.toString();
                                             //count existing posts
-
                                             //upload url in next count
-                                            DatabaseReference databaseReference= FirebaseDatabase.getInstance().getReference("Facts_image").child(count+1+"");
-
+                                            String databaseReference_id= FirebaseDatabase.getInstance().getReference("Post").push().getKey();
+                                            assert databaseReference_id != null;
+                                            DatabaseReference databaseReference= FirebaseDatabase.getInstance().getReference("Post").child(databaseReference_id);
                                             Map<String,Object> data = new HashMap<>();
-                                            data.put("imageUri",firebase_img_uri);
-                                            data.put("uploader_img",firebaseUser.getPhotoUrl().toString());
-                                            data.put("uploader_name",firebaseUser.getDisplayName().toString());
+                                            data.put("Post_url",firebase_img_uri);
+                                            data.put("Uploader_uid",firebaseUser.getUid().toString());
+                                            data.put("Uploader_img",);
+                                            data.put("Uploader_name",);
+                                            data.put("Likes",);
                                             databaseReference.setValue(data).addOnSuccessListener(new OnSuccessListener<Void>() {
                                                 @Override
                                                 public void onSuccess(Void unused) {
@@ -147,7 +145,7 @@ public class UploadImageActivity extends AppCompatActivity {
                                                                 @Override
                                                                 public void onSuccess(Void aVoid) {
                                                                     progressDialog.dismiss();
-                                                                    Toast.makeText(uploadedActivity.this, "Image Uploaded!!",Toast.LENGTH_SHORT).show();
+                                                                    Toast.makeText(UploadImageActivity.this, "Image Uploaded!!",Toast.LENGTH_SHORT).show();
                                                                     startActivity(getIntent());
                                                                     finish();
                                                                     overridePendingTransition(0, 0);
@@ -176,7 +174,7 @@ public class UploadImageActivity extends AppCompatActivity {
 
                             // Error, Image not uploaded
                             progressDialog.dismiss();
-                            Toast.makeText(uploadedActivity.this, "Image Upload Failed " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(UploadImageActivity.this, "Image Upload Failed " + e.getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     })
                     .addOnProgressListener(
