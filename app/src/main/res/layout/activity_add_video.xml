@@ -9,16 +9,6 @@
     android:padding="10dp"
     tools:context=".addVideo">
 
-    <EditText
-        android:id="@+id/title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorWhite"
-        android:hint="Enter Title"
-        android:inputType="textPersonName|textCapSentences"
-        android:padding="10dp"
-        android:textColor="@color/black"/>
-
     <VideoView
         android:id="@+id/videoView"
         android:layout_width="match_parent"
@@ -26,17 +16,29 @@
         android:layout_below="@+id/title"
         android:layout_marginTop="5dp"/>
 
+
+    <EditText
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:background="@color/colorWhite"
+        android:hint="Enter Title"
+        android:inputType="textPersonName|textCapSentences"
+        android:padding="10dp"
+        android:textColor="@color/black" />
+
     <Button
         android:id="@+id/uploadVideo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/videoView"
-        android:layout_marginTop="5dp"
-        android:text="Upload Video"
+        android:layout_marginTop="107dp"
         android:background="@color/blue"
-        android:textColor="@color/colorWhite"/>
+        android:text="Upload Video"
+        android:textColor="@color/colorWhite" />
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/pickVideo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
