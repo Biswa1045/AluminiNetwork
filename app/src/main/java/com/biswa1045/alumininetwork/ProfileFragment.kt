@@ -1,26 +1,26 @@
 package com.biswa1045.alumininetwork
 
-import android.app.Activity
 import android.app.Dialog
-import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
-import androidx.core.app.ActivityCompat.finishAffinity
 import androidx.fragment.app.Fragment
 import com.google.firebase.auth.FirebaseAuth
 
 
 class ProfileFragment:Fragment(R.layout.fragment_profile) {
-
+    private lateinit var name:TextView
+    private lateinit var email:TextView
+    private lateinit var batch:TextView
+    private lateinit var branch:TextView
+    private lateinit var address:TextView
         override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?
@@ -35,6 +35,16 @@ class ProfileFragment:Fragment(R.layout.fragment_profile) {
                 showpopup_logout()
             }
 
+            name = view?.findViewById(R.id.name_p)!!
+            email = view?.findViewById(R.id.email_p)!!
+            batch = view?.findViewById(R.id.batch_p)!!
+            branch = view?.findViewById(R.id.branch_p)!!
+            address = view?.findViewById(R.id.address_p)!!
+            name.text=NAME
+            email.text=com.biswa1045.alumininetwork.EMAIL
+            batch.text=com.biswa1045.alumininetwork.BATCH+" - Batch"
+            branch.text=com.biswa1045.alumininetwork.BRANCH
+            address.text=com.biswa1045.alumininetwork.ADDRESS
 
         }
 

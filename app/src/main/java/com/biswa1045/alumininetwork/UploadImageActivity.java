@@ -7,6 +7,10 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -17,20 +21,29 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.yalantis.ucrop.UCrop;
+
+import org.checkerframework.common.subtyping.qual.Bottom;
+
 public class UploadImageActivity extends AppCompatActivity {
     private final int PICK_IMAGE_REQUEST = 22;
-    private final String SAMPLE_CROPPED_IMG = "CropFact";
+    private final String SAMPLE_CROPPED_IMG = "CropPost";
     FirebaseStorage storage;
     private FirebaseFirestore db;
     StorageReference storageReference;
@@ -38,11 +51,24 @@ public class UploadImageActivity extends AppCompatActivity {
     ImageView img;
     String firebase_img_uri;
     Uri filePath,imguri_crped;
+    String name;
+    EditText caption;
+    Button post;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_upload_image);
-
+        SelectImage();
+        db = FirebaseFirestore.getInstance();
+        img = findViewById(R.id.image_upload);
+        caption = findViewById(R.id.caption);
+        post = findViewById(R.id.post_image);
+        post.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                uploadImage();
+            }
+        });
     }
     private void startCrop(@NonNull Uri uri){
         String destinationFileName = SAMPLE_CROPPED_IMG;
@@ -82,7 +108,6 @@ public class UploadImageActivity extends AppCompatActivity {
         super.onActivityResult(requestCode,resultCode,data);
 
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
-
             filePath = data.getData();
             startCrop(filePath);
         }else if(requestCode == UCrop.REQUEST_CROP) {
@@ -97,7 +122,7 @@ public class UploadImageActivity extends AppCompatActivity {
 
 
     }
-  /*  private void uploadImage() {
+    private void uploadImage() {
         if (imguri_crped != null) {
             // Code for showing progressDialog while uploading
             ProgressDialog progressDialog
@@ -108,62 +133,88 @@ public class UploadImageActivity extends AppCompatActivity {
             SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault());
             String currentDateandTime = sdf.format(new Date());
             firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+            storageReference = FirebaseStorage.getInstance().getReference();
             StorageReference ref = storageReference.child("posts").child(firebaseUser.getUid()+"_"+currentDateandTime+".jpg");
             ref.putFile(imguri_crped).addOnSuccessListener(
                             new OnSuccessListener<UploadTask.TaskSnapshot>() {
                                 @Override
                                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot)
                                 {
-                                    //download url of post
-                                    ref.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+
+                                    DocumentReference docRef = db.collection("User").document(firebaseUser.getUid());
+                                    docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                                         @Override
-                                        public void onSuccess(Uri uri) {
-                                            firebase_img_uri = uri.toString();
-                                            //count existing posts
-                                            //upload url in next count
-                                            String databaseReference_id= FirebaseDatabase.getInstance().getReference("Post").push().getKey();
-                                            assert databaseReference_id != null;
-                                            DatabaseReference databaseReference= FirebaseDatabase.getInstance().getReference("Post").child(databaseReference_id);
-                                            Map<String,Object> data = new HashMap<>();
-                                            data.put("Post_url",firebase_img_uri);
-                                            data.put("Uploader_uid",firebaseUser.getUid().toString());
-                                            data.put("Uploader_img",);
-                                            data.put("Uploader_name",);
-                                            data.put("Likes",);
-                                            databaseReference.setValue(data).addOnSuccessListener(new OnSuccessListener<Void>() {
-                                                @Override
-                                                public void onSuccess(Void unused) {
-                                                    final String upload = db.collection("User").document(firebaseUser.getUid())
-                                                            .collection("uploads").document().getId();
+                                        public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                                            if (task.isSuccessful()) {
+                                                DocumentSnapshot document = task.getResult();
+                                                if (document != null) {
+                                                    name = document.getString("NAME");
 
-                                                    FirebaseFirestore.getInstance().collection("User")
-                                                            .document(firebaseUser.getUid())
-                                                            .collection("uploads")
-                                                            .document(upload)
-                                                            .set(data)
-                                                            .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                    ref.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                                        @Override
+                                                        public void onSuccess(Uri uri) {
+                                                            firebase_img_uri = uri.toString();
+                                                            //count existing posts
+                                                            //upload url in next count
+                                                            String databaseReference_id= FirebaseDatabase.getInstance().getReference("Post").push().getKey();
+                                                            assert databaseReference_id != null;
+                                                            DatabaseReference databaseReference= FirebaseDatabase.getInstance().getReference("Post").child(databaseReference_id);
+                                                            Map<String,Object> data = new HashMap<>();
+                                                            data.put("Post_url",firebase_img_uri);
+                                                            data.put("Uploader_uid",firebaseUser.getUid().toString());
+                                                            data.put("Uploader_img","q");
+                                                            data.put("Uploader_name",name);
+                                                            data.put("Likes","0");
+                                                            data.put("Caption",caption.getText().toString());
+                                                            databaseReference.setValue(data).addOnSuccessListener(new OnSuccessListener<Void>() {
                                                                 @Override
-                                                                public void onSuccess(Void aVoid) {
-                                                                    progressDialog.dismiss();
-                                                                    Toast.makeText(UploadImageActivity.this, "Image Uploaded!!",Toast.LENGTH_SHORT).show();
-                                                                    startActivity(getIntent());
-                                                                    finish();
-                                                                    overridePendingTransition(0, 0);
+                                                                public void onSuccess(Void unused) {
+                                                                    final String upload = db.collection("User").document(firebaseUser.getUid())
+                                                                            .collection("uploads").document().getId();
 
-                                                                }
-                                                            }).addOnFailureListener(new OnFailureListener() {
-                                                                @Override
-                                                                public void onFailure(@NonNull Exception e) {
-                                                                    Toast.makeText(getApplicationContext(), "check network connection", Toast.LENGTH_SHORT).show();
+                                                                    FirebaseFirestore.getInstance().collection("User")
+                                                                            .document(firebaseUser.getUid())
+                                                                            .collection("uploads")
+                                                                            .document(upload)
+                                                                            .set(data)
+                                                                            .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                                                @Override
+                                                                                public void onSuccess(Void aVoid) {
+                                                                                    progressDialog.dismiss();
+                                                                                    Toast.makeText(UploadImageActivity.this, "Image Uploaded!!",Toast.LENGTH_SHORT).show();
+                                                                                    post.setEnabled(false);
+
+                                                                                }
+                                                                            }).addOnFailureListener(new OnFailureListener() {
+                                                                                @Override
+                                                                                public void onFailure(@NonNull Exception e) {
+                                                                                    Toast.makeText(getApplicationContext(), "check network connection", Toast.LENGTH_SHORT).show();
+                                                                                }
+                                                                            });
                                                                 }
                                                             });
+                                                        }
+                                                    });
+
+
+
+
+
                                                 }
-                                            });
+                                            } else {
+                                                Log.d("LOGGER", "get failed with ", task.getException());
+                                            }
                                         }
                                     });
 
-                                    // Image uploaded successfully
-                                    // Dismiss dialog
+
+
+
+
+
+
+
+
                                 }
                             })
 
@@ -186,18 +237,25 @@ public class UploadImageActivity extends AppCompatActivity {
                                 public void onProgress(
                                         UploadTask.TaskSnapshot taskSnapshot)
                                 {
-                                    double progress
-                                            = (100.0
-                                            * taskSnapshot.getBytesTransferred()
-                                            / taskSnapshot.getTotalByteCount());
-                                    progressDialog.setMessage(
-                                            "Uploaded "
-                                                    + (int)progress + "%");
+                                    double progress = (100.0 * taskSnapshot.getBytesTransferred() / taskSnapshot.getTotalByteCount());
+                                    progressDialog.setMessage("Uploaded " + (int)progress + "%");
                                 }
                             });
         }else {
 
         }
-    }*/
+    }
 
+    @Override
+    public void onBackPressed() {
+        Intent in = new Intent(getApplicationContext(),MainActivity.class);
+        startActivity(in);
+        finish();
+    }
+
+    public void back(View view) {
+        Intent in = new Intent(getApplicationContext(),MainActivity.class);
+        startActivity(in);
+        finish();
+    }
 }

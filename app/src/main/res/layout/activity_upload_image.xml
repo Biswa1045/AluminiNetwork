@@ -1,9 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background"
     tools:context=".UploadImageActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <RelativeLayout
+        android:id="@+id/r"
+        android:padding="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="450dp"
+        android:background="@color/blue"
+        android:orientation="vertical">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="back"
+            android:src="@drawable/ic_baseline_arrow_back_24"
+            />
+        <androidx.cardview.widget.CardView
+            android:layout_margin="50dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/black"
+            app:cardCornerRadius="20dp"
+            >
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@color/black"
+                android:id="@+id/image_upload"/>
+        </androidx.cardview.widget.CardView>
+
+    </RelativeLayout>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/white"
+        android:textStyle="bold"
+        android:id="@+id/caption"
+        android:textColor="@color/white"
+        android:textSize="18dp"
+        android:inputType="textMultiLine"
+        android:hint="Enter Something..."
+        android:layout_below="@+id/r"
+        android:layout_marginTop="20dp"
+        android:textColorHint="#80FFFFFF"
+        android:layout_marginHorizontal="15dp"/>
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/cornor_btn"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+        android:id="@+id/post_image"
+        android:text="Post Photo"
+        android:textStyle="bold"
+        android:textSize="14dp"
+        />
+</RelativeLayout>
