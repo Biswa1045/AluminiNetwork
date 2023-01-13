@@ -62,7 +62,7 @@ class MainActivity : AppCompatActivity() {
 
         }
         dialog.findViewById<CardView>(R.id.post_video)?.setOnClickListener {
-            startActivity(Intent(applicationContext, UploadVideoActivity::class.java))
+            startActivity(Intent(applicationContext, UploadVideo::class.java))
             finish()
         }
     }
