@@ -45,7 +45,7 @@ public class clubs extends AppCompatActivity {
                 image1.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                       gotUrl("");
+                       gotUrl("https://www.instagram.com/drishya.official/");
                     }
                 });
             }
@@ -125,10 +125,6 @@ public class clubs extends AppCompatActivity {
         });
 
     }
-
-
-
-
     private void gotUrl(String s) {
         Uri uri=Uri.parse(s);
         startActivity(new Intent(Intent.ACTION_VIEW,uri));
