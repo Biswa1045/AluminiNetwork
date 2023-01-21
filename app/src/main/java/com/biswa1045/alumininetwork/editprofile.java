@@ -44,16 +44,17 @@ public class editprofile extends AppCompatActivity {
     private  static final String KEY_ADD="ADDRESS";
     private  static final String KEY_ID="UID";
     private FirebaseFirestore db= FirebaseFirestore.getInstance();
-  ImageButton backbtn;
-  ImageView profile;
-  EditText name,gmail;
-  RadioGroup gender;
-  Spinner branch,batch;
-  EditText address;
-  Button update;
- private static final int IMAGE_CODE=400;
- private ProgressDialog progressDialog;
- private FirebaseAuth firebaseAuth;
+    TextView ps1,ps2;
+    ImageButton backbtn;
+    ImageView profile;
+    EditText name,gmail;
+    RadioGroup gender;
+    Spinner branch,batch;
+    EditText address;
+    Button update;
+    private static final int IMAGE_CODE=400;
+    private ProgressDialog progressDialog;
+    private FirebaseAuth firebaseAuth;
 
 
     String gender_s;
@@ -91,6 +92,8 @@ public class editprofile extends AppCompatActivity {
         branch=findViewById(R.id.branch);
         batch=findViewById(R.id.batch);
         address=findViewById(R.id.address);
+        ps1=findViewById(R.id.ps1);
+        ps2=findViewById(R.id.ps2);
 
         DatabaseReference ref= FirebaseDatabase.getInstance().getReference("User");
             ref.orderByChild("uid").equalTo(firebaseAuth.getUid())
@@ -123,7 +126,8 @@ public class editprofile extends AppCompatActivity {
         branch.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                ((TextView) parent.getChildAt(0)).setTextColor(Color.WHITE);
+                ((TextView) parent.getChildAt(0)).setTextColor(Color.BLACK);
+                ps2.setVisibility(View.GONE);
                 String branch_spn=parent.getItemAtPosition(position).toString();
             }
 
@@ -138,7 +142,8 @@ public class editprofile extends AppCompatActivity {
         batch.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                ((TextView) parent.getChildAt(0)).setTextColor(Color.WHITE);
+                ((TextView) parent.getChildAt(0)).setTextColor(Color.BLACK);
+                ps1.setVisibility(View.GONE);
                 String batch_spn=parent.getItemAtPosition(position).toString();
 
             }
