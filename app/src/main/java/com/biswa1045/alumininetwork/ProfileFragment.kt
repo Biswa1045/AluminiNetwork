@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
@@ -16,6 +17,7 @@ import com.google.firebase.auth.FirebaseAuth
 
 
 class ProfileFragment:Fragment(R.layout.fragment_profile) {
+    private lateinit var editprofile:ImageButton
     private lateinit var name:TextView
     private lateinit var email:TextView
     private lateinit var batch:TextView
@@ -34,7 +36,7 @@ class ProfileFragment:Fragment(R.layout.fragment_profile) {
             view?.findViewById<LinearLayout>(R.id.logout_l)?.setOnClickListener{
                 showpopup_logout()
             }
-
+            editprofile = view?.findViewById(R.id.editprofile)!!
             name = view?.findViewById(R.id.name_p)!!
             email = view?.findViewById(R.id.email_p)!!
             batch = view?.findViewById(R.id.batch_p)!!
@@ -45,6 +47,10 @@ class ProfileFragment:Fragment(R.layout.fragment_profile) {
             batch.text=com.biswa1045.alumininetwork.BATCH+" - Batch"
             branch.text=com.biswa1045.alumininetwork.BRANCH
             address.text=com.biswa1045.alumininetwork.ADDRESS
+
+            view?.findViewById<ImageButton>(R.id.editprofile)?.setOnClickListener{
+
+            }
 
         }
 
@@ -66,4 +72,5 @@ class ProfileFragment:Fragment(R.layout.fragment_profile) {
         dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         dialog.show()
     }
+
 }

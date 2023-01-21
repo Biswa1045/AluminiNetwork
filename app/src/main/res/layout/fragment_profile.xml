@@ -15,6 +15,16 @@
         android:orientation="vertical"
         android:background="@color/background">
 
+        <ImageButton
+            android:id="@+id/editprofile"
+            android:layout_width="40dp"
+            android:layout_height="50dp"
+            android:layout_gravity="right"
+            android:src="@drawable/ic_baseline_edit_24"
+            android:paddingRight="10dp"
+            android:layout_marginRight="10dp"/>
+
+
         <androidx.cardview.widget.CardView
             android:layout_width="95dp"
             android:layout_height="95dp"
