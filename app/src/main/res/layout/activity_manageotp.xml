@@ -11,13 +11,14 @@
     <TextView
         android:layout_below="@+id/imageView"
         android:layout_marginTop="10dp"
+        android:fontFamily="@font/actor"
         android:id="@+id/textView4"
         android:layout_marginHorizontal="15dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAlignment="center"
         android:text="Enter the verification code that we just sent to your "
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="16dp"
        />
         <EditText
@@ -26,14 +27,15 @@
             android:layout_below="@+id/textView4"
             android:layout_marginTop="30dp"
             android:layout_centerHorizontal="true"
+            android:fontFamily="@font/actor"
             android:textStyle="bold"
             android:textSize="22dp"
             android:id="@+id/edit"
             android:textAlignment="center"
-            android:backgroundTint="@color/white"
-            android:textColor="@color/white"
+            android:backgroundTint="@color/black"
+            android:textColor="@color/black"
             android:hint="Enter your OTP"
-            android:textColorHint="#A6FFFFFF"/>
+            android:textColorHint="#80000000"/>
 
 
     <Button
@@ -43,9 +45,11 @@
         android:id="@+id/butt"
         android:layout_width="286dp"
         android:layout_height="60dp"
+        android:fontFamily="@font/actor"
         android:text="verify"
         android:textSize="18dp"
         android:layout_marginBottom="50dp"
+        android:textColor="@color/white"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

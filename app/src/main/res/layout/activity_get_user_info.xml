@@ -22,7 +22,7 @@
             android:layout_height="wrap_content"
             android:text="Details"
             android:textStyle="bold"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="22dp"/>
         <LinearLayout
             android:layout_marginTop="30dp"
@@ -31,6 +31,7 @@
             android:background="@drawable/border"
             android:orientation="horizontal">
             <EditText
+
                 android:layout_gravity="center_vertical"
                 android:id="@+id/name"
                 android:layout_width="match_parent"
@@ -39,9 +40,10 @@
                 android:cursorVisible="true"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:hint="Name"
-                android:textColorHint="#8AFFFFFF"
-                android:textColor="@color/white"
+                android:hint="Enter Name"
+                android:textColorHint="#000000"
+                android:fontFamily="@font/actor"
+                android:textColor="@color/black"
                 android:textSize="18sp"
                 android:visibility="visible"
                 android:layout_marginLeft="15dp"
@@ -62,9 +64,10 @@
                 android:cursorVisible="true"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:hint="Gmail"
-                android:textColorHint="#8AFFFFFF"
-                android:textColor="@color/white"
+                android:hint="Enter Email"
+                android:textColorHint="#000000"
+                android:fontFamily="@font/actor"
+                android:textColor="@color/black"
                 android:textSize="18sp"
                 android:visibility="visible"
                 android:layout_marginLeft="15dp"
@@ -74,7 +77,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="18dp"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textStyle="normal"
             android:text="Gender"
             android:layout_marginTop="20dp"/>
@@ -90,6 +93,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="male"
+                android:fontFamily="@font/actor"
                 android:textColor="@color/blue"
                 android:textSize="20sp" />
 
@@ -99,6 +103,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="female"
+                android:fontFamily="@font/actor"
                 android:textColor="@color/blue"
                 android:textSize="20sp" />
 
@@ -113,7 +118,8 @@
                 android:layout_height="wrap_content"
                 android:text="Passout Batch"
                 android:layout_gravity="center_vertical"
-                android:textColor="#80FFFFFF"
+                android:textColor="@color/black"
+                android:fontFamily="@font/actor"
                 android:textSize="20sp"
               />
             <Spinner
@@ -136,11 +142,11 @@
                 android:layout_height="wrap_content"
                 android:text="Branch"
                 android:layout_gravity="center_vertical"
-                android:textColor="#80FFFFFF"
+                android:textColor="@color/black"
+                android:fontFamily="@font/actor"
                 android:textSize="20sp"
                 />
             <Spinner
-
                 android:padding="10dp"
                 android:background="@drawable/border"
                 android:layout_marginLeft="10dp"
@@ -166,8 +172,33 @@
                 android:hint="Address"
                 android:background="@null"
                 android:inputType="textMultiLine"
-                android:textColorHint="#80FFFFFF"
-                android:textColor="@color/white"
+                android:textColorHint="#80000000"
+                android:fontFamily="@font/actor"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:visibility="visible"
+                android:layout_marginLeft="15dp"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginTop="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:background="@drawable/border"
+            android:orientation="horizontal">
+            <EditText
+                android:layout_gravity="center_vertical"
+                android:id="@+id/current_position"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:cursorVisible="true"
+                android:ems="10"
+                android:hint="Current Position eg:Employee,Business etc."
+                android:background="@null"
+                android:inputType="textMultiLine"
+                android:textColorHint="#80000000"
+                android:fontFamily="@font/actor"
+                android:textColor="@color/black"
                 android:textSize="18sp"
                 android:visibility="visible"
                 android:layout_marginLeft="15dp"

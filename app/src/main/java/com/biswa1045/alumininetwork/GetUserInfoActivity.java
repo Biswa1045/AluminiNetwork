@@ -35,8 +35,7 @@ import java.util.Map;
     private  static final String KEY_BATCH="PASSOUT BATCH";
     private  static final String KEY_BRANCH="BRANCH";
     private  static final String KEY_ADD="ADDRESS";
-      private  static final String KEY_ID="UID";
-   // private  static final String KEY_SPE="SPECIALISATION";
+    private  static final String KEY_SPE="SPECIALISATION";
 
     private FirebaseFirestore db= FirebaseFirestore.getInstance();
     EditText name;
@@ -130,7 +129,6 @@ String[] year_arr={"1980","1981","1982","1983","1984","1985","1986","1987","1988
                     note.put(KEY_BRANCH,BRANCH);
                     note.put(KEY_GENDER,GENDER);
                     String uid = firebaseUser.getUid().toString();
-                    note.put(KEY_ID,uid);
                     db.collection("User").document(uid).set(note)
                             .addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
