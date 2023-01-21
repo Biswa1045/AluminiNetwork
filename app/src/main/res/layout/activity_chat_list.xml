@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    tools:context=".ChatListActivity">
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:id="@+id/progress_circular_bar"/>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="55sp">
+        <ImageView
+            android:onClick="back_chat_list"
+            android:layout_width="25dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/back"
+            android:layout_marginLeft="15dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Chats"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:textColor="@color/black"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp"/>
+
+
+    </LinearLayout>
+
+<androidx.recyclerview.widget.RecyclerView
+    android:layout_marginTop="55dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/recycle_chatlist"/>
+</RelativeLayout>

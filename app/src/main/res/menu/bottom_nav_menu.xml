@@ -3,13 +3,29 @@
     <item
         android:id="@+id/home"
         android:title="Home"
-        android:icon="@drawable/ic_home_black_24dp"/>
+        android:iconTint="@color/black"
+        android:icon="@drawable/home_selector"/>
+    <item
+        android:id="@+id/network"
+        android:title="Network"
+        android:iconTint="@color/black"
+        android:icon="@drawable/network_selector"
+        />
     <item
         android:id="@+id/add"
-        android:title=""
-        android:icon="@drawable/ic_home_black_24dp"/>
+        android:title="Post"
+        android:iconTint="@color/black"
+        android:icon="@drawable/post_selector"/>
+    <item
+        android:id="@+id/notification"
+        android:title="Notification"
+        android:iconTint="@color/black"
+        android:icon="@drawable/notification_selector"
+        />
     <item
         android:id="@+id/profile"
         android:title="Profile"
-        android:icon="@drawable/ic_home_black_24dp"/>
+        android:iconTint="@color/black"
+        android:icon="@drawable/user_selector"
+        />
 </menu>

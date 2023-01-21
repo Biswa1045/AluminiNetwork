@@ -11,6 +11,7 @@
         android:id="@+id/imageView4"
         android:layout_width="411dp"
         android:layout_height="222dp"
+        android:layout_marginTop="20dp"
         app:srcCompat="@drawable/login" />
 
 
@@ -37,8 +38,8 @@
                 android:orientation="horizontal">
                 <com.hbb20.CountryCodePicker
                     android:id="@+id/cpp"
-                    app:ccp_arrowColor="@color/white"
-                    app:ccp_contentColor="@color/white"
+                    app:ccp_arrowColor="@color/black"
+                    app:ccp_contentColor="@color/black"
                     android:layout_width="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_height="46dp"
@@ -48,20 +49,20 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.724" />
+
                 <EditText
-                    android:layout_gravity="center_vertical"
                     android:id="@+id/editText"
-                    android:background="@null"
-                    android:textColorHint="#A1CFCFD3"
-                    android:textColor="@color/white"
                     android:layout_width="wrap_content"
                     android:layout_height="56dp"
+                    android:layout_gravity="center_vertical"
+                    android:background="@null"
                     android:ems="10"
                     android:hint="Enter Mobile Number"
-                    android:textStyle="bold"
                     android:inputType="phone"
+                    android:textColor="@color/black"
+                    android:textColorHint="#80000000"
                     android:textSize="16sp"
-                    />
+                    android:textStyle="bold" />
             </LinearLayout>
 
 
@@ -74,19 +75,13 @@
         android:layout_height="56dp"
         android:background="@drawable/cornor_btn"
         android:text="Send OTP"
+        android:textColor="@color/white"
+        android:fontFamily="@font/actor"
         android:textStyle="bold"
         android:textSize="18dp"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="50dp"
         android:layout_alignParentBottom="true"
         />
-
-
-
-
-
-
-
-
 </RelativeLayout>
 

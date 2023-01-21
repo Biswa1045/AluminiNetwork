@@ -21,6 +21,7 @@ class ProfileFragment:Fragment(R.layout.fragment_profile) {
     private lateinit var batch:TextView
     private lateinit var branch:TextView
     private lateinit var address:TextView
+    private lateinit var current_position:TextView
         override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?
@@ -34,18 +35,30 @@ class ProfileFragment:Fragment(R.layout.fragment_profile) {
             view?.findViewById<LinearLayout>(R.id.logout_l)?.setOnClickListener{
                 showpopup_logout()
             }
-
+            view?.findViewById<LinearLayout>(R.id.activity_profile)?.setOnClickListener{
+                startActivity(Intent(context, UploadsActivity::class.java))
+                // finish()
+            }
+            view?.findViewById<LinearLayout>(R.id.spam_activity)?.setOnClickListener{
+                //   startActivity(Intent(applicationContext, UploadsActivity::class.java))
+                //  finish()
+            }
+            view?.findViewById<LinearLayout>(R.id.privacy_profile)?.setOnClickListener{
+                startActivity(Intent(context, PrivacyActivity::class.java))
+                // finish()
+            }
             name = view?.findViewById(R.id.name_p)!!
             email = view?.findViewById(R.id.email_p)!!
             batch = view?.findViewById(R.id.batch_p)!!
             branch = view?.findViewById(R.id.branch_p)!!
             address = view?.findViewById(R.id.address_p)!!
+            current_position = view?.findViewById(R.id.current_position)!!
             name.text=NAME
             email.text=com.biswa1045.alumininetwork.EMAIL
             batch.text=com.biswa1045.alumininetwork.BATCH+" - Batch"
             branch.text=com.biswa1045.alumininetwork.BRANCH
             address.text=com.biswa1045.alumininetwork.ADDRESS
-
+            current_position.text=com.biswa1045.alumininetwork.CURRENT_POSITION
         }
 
 

@@ -3,19 +3,25 @@ package com.biswa1045.alumininetwork;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
@@ -44,7 +50,6 @@ import org.checkerframework.common.subtyping.qual.Bottom;
 public class UploadImageActivity extends AppCompatActivity {
     private final int PICK_IMAGE_REQUEST = 22;
     private final String SAMPLE_CROPPED_IMG = "CropPost";
-    FirebaseStorage storage;
     private FirebaseFirestore db;
     StorageReference storageReference;
     private FirebaseUser firebaseUser;
@@ -53,12 +58,14 @@ public class UploadImageActivity extends AppCompatActivity {
     Uri filePath,imguri_crped;
     String name;
     EditText caption;
+    private  Dialog dialog;
     Button post;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_upload_image);
         SelectImage();
+        dialog = new Dialog(this);
         db = FirebaseFirestore.getInstance();
         img = findViewById(R.id.image_upload);
         caption = findViewById(R.id.caption);
@@ -74,7 +81,7 @@ public class UploadImageActivity extends AppCompatActivity {
         String destinationFileName = SAMPLE_CROPPED_IMG;
         destinationFileName +=".jpg";
         UCrop uCrop = UCrop.of(uri,Uri.fromFile(new File(getCacheDir(),destinationFileName)));
-        uCrop.withAspectRatio(2,3);
+       // uCrop.withAspectRatio(1,1);
         uCrop.withMaxResultSize(450,450);
         uCrop.withOptions(getCropOptions());
         uCrop.start(UploadImageActivity.this);
@@ -119,19 +126,23 @@ public class UploadImageActivity extends AppCompatActivity {
             final Throwable cropError = UCrop.getError(data);
             Toast.makeText(UploadImageActivity.this, "please try again later", Toast.LENGTH_SHORT).show();
         }
-
-
     }
     private void uploadImage() {
         if (imguri_crped != null) {
             // Code for showing progressDialog while uploading
-            ProgressDialog progressDialog
-                    = new ProgressDialog(this);
+            ProgressDialog progressDialog = new ProgressDialog(this);
             progressDialog.setTitle("Uploading...");
             progressDialog.show();
             progressDialog.setCancelable(false);
             SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault());
             String currentDateandTime = sdf.format(new Date());
+            Calendar cal= Calendar.getInstance();
+            SimpleDateFormat month = new SimpleDateFormat("MMM");
+            SimpleDateFormat date = new SimpleDateFormat("dd");
+            SimpleDateFormat year = new SimpleDateFormat("yyyy");
+            String monthString = month.format(cal.getTime());
+            String dayString = date.format(cal.getTime());
+            String yearString = year.format(cal.getTime());
             firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
             storageReference = FirebaseStorage.getInstance().getReference();
             StorageReference ref = storageReference.child("posts").child(firebaseUser.getUid()+"_"+currentDateandTime+".jpg");
@@ -140,7 +151,6 @@ public class UploadImageActivity extends AppCompatActivity {
                                 @Override
                                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot)
                                 {
-
                                     DocumentReference docRef = db.collection("User").document(firebaseUser.getUid());
                                     docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                                         @Override
@@ -149,7 +159,6 @@ public class UploadImageActivity extends AppCompatActivity {
                                                 DocumentSnapshot document = task.getResult();
                                                 if (document != null) {
                                                     name = document.getString("NAME");
-
                                                     ref.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                                                         @Override
                                                         public void onSuccess(Uri uri) {
@@ -164,8 +173,10 @@ public class UploadImageActivity extends AppCompatActivity {
                                                             data.put("Uploader_uid",firebaseUser.getUid().toString());
                                                             data.put("Uploader_img","q");
                                                             data.put("Uploader_name",name);
-                                                            data.put("Likes","0");
                                                             data.put("Caption",caption.getText().toString());
+                                                            data.put("Post_id",databaseReference_id);
+                                                            data.put("Post_time",dayString+" "+monthString+" "+yearString);
+                                                            data.put("Post_type","image");
                                                             databaseReference.setValue(data).addOnSuccessListener(new OnSuccessListener<Void>() {
                                                                 @Override
                                                                 public void onSuccess(Void unused) {
@@ -183,6 +194,7 @@ public class UploadImageActivity extends AppCompatActivity {
                                                                                     progressDialog.dismiss();
                                                                                     Toast.makeText(UploadImageActivity.this, "Image Uploaded!!",Toast.LENGTH_SHORT).show();
                                                                                     post.setEnabled(false);
+                                                                                    showpopup_complete();
 
                                                                                 }
                                                                             }).addOnFailureListener(new OnFailureListener() {
@@ -195,26 +207,12 @@ public class UploadImageActivity extends AppCompatActivity {
                                                             });
                                                         }
                                                     });
-
-
-
-
-
                                                 }
                                             } else {
                                                 Log.d("LOGGER", "get failed with ", task.getException());
                                             }
                                         }
                                     });
-
-
-
-
-
-
-
-
-
                                 }
                             })
 
@@ -226,6 +224,7 @@ public class UploadImageActivity extends AppCompatActivity {
                             // Error, Image not uploaded
                             progressDialog.dismiss();
                             Toast.makeText(UploadImageActivity.this, "Image Upload Failed " + e.getMessage(), Toast.LENGTH_SHORT).show();
+
                         }
                     })
                     .addOnProgressListener(
@@ -252,7 +251,21 @@ public class UploadImageActivity extends AppCompatActivity {
         startActivity(in);
         finish();
     }
+    private void showpopup_complete(){
 
+        dialog.setContentView(R.layout.uploaded_dailog);
+        dialog.findViewById(R.id.ok).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+                Intent in = new Intent(getApplicationContext(),MainActivity.class);
+                startActivity(in);
+                finish();
+            }
+        });
+       dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+       dialog.show();
+    }
     public void back(View view) {
         Intent in = new Intent(getApplicationContext(),MainActivity.class);
         startActivity(in);

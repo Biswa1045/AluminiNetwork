@@ -35,12 +35,13 @@ import java.util.Map;
     private  static final String KEY_BATCH="PASSOUT BATCH";
     private  static final String KEY_BRANCH="BRANCH";
     private  static final String KEY_ADD="ADDRESS";
+    private  static final String KEY_CURRENT_POSITION="CURRENT_POSITION";
     private  static final String KEY_SPE="SPECIALISATION";
-
     private FirebaseFirestore db= FirebaseFirestore.getInstance();
     EditText name;
     EditText gmail;
     EditText address;
+    EditText current_position;
     RadioGroup gender;
     Button submit;
     Spinner batch;
@@ -65,6 +66,7 @@ String[] year_arr={"1980","1981","1982","1983","1984","1985","1986","1987","1988
         name=findViewById(R.id.name);
         gmail=findViewById(R.id.gmail);
         address=findViewById(R.id.address);
+        current_position=findViewById(R.id.current_position);
         gender = findViewById(R.id.gender_group);
         branch = findViewById(R.id.branch);
         batch = findViewById(R.id.batch);
@@ -74,7 +76,7 @@ String[] year_arr={"1980","1981","1982","1983","1984","1985","1986","1987","1988
         branch.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                ((TextView) parent.getChildAt(0)).setTextColor(Color.WHITE);
+                ((TextView) parent.getChildAt(0)).setTextColor(Color.BLACK);
                  branch_spn=parent.getItemAtPosition(position).toString();
 
 
@@ -91,7 +93,7 @@ String[] year_arr={"1980","1981","1982","1983","1984","1985","1986","1987","1988
         batch.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                ((TextView) parent.getChildAt(0)).setTextColor(Color.WHITE);
+                ((TextView) parent.getChildAt(0)).setTextColor(Color.BLACK);
                 batch_spn=parent.getItemAtPosition(position).toString();
 
             }
@@ -117,10 +119,11 @@ String[] year_arr={"1980","1981","1982","1983","1984","1985","1986","1987","1988
                 String NAME=name.getText().toString();
                 String EMAIL=gmail.getText().toString();
                 String ADDRESS=address.getText().toString();
+                String CURRENT_POSITION = current_position.getText().toString();
                 String GENDER= gender_s;
                 String BATCH=batch_spn;
                 String BRANCH= branch_spn;
-                if(!NAME.equals("") &&!EMAIL.equals("") && !ADDRESS.equals("") && GENDER != null &&!BATCH.equals("") &&!BRANCH.equals("") ){
+                if(!NAME.equals("") &&!EMAIL.equals("") && !ADDRESS.equals("") && GENDER != null &&!BATCH.equals("") &&!BRANCH.equals("") && !CURRENT_POSITION.equals("") ){
                     Map<String,Object> note=new HashMap<>();
                     note.put(KEY_NAME,NAME);
                     note.put(KEY_EMAIL,EMAIL);
@@ -128,6 +131,7 @@ String[] year_arr={"1980","1981","1982","1983","1984","1985","1986","1987","1988
                     note.put(KEY_BATCH,BATCH);
                     note.put(KEY_BRANCH,BRANCH);
                     note.put(KEY_GENDER,GENDER);
+                    note.put(KEY_CURRENT_POSITION,CURRENT_POSITION);
                     String uid = firebaseUser.getUid().toString();
                     db.collection("User").document(uid).set(note)
                             .addOnSuccessListener(new OnSuccessListener<Void>() {
