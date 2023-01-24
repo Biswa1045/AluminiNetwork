@@ -18,11 +18,11 @@ import java.util.List;
 public class MyPhotos extends RecyclerView.Adapter<MyPhotos.ViewHolder>{
 
     private Context context;
-    private List<PostAdapter> mpost;
+    private List<PostAdapter> post;
 
-    public MyPhotos(Context context, List<post> mpost) {
+    public MyPhotos(Context context, List<post> postList) {
         this.context = context;
-        this.mpost = mpost;
+        this.post = post;
     }
 
     @NonNull
@@ -35,7 +35,7 @@ public class MyPhotos extends RecyclerView.Adapter<MyPhotos.ViewHolder>{
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-PostAdapter postAdapter=mpost.get(position);
+PostAdapter postAdapter=post.get(position);
 
     }
 
