@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
@@ -21,6 +22,7 @@ class ProfileFragment:Fragment(R.layout.fragment_profile) {
     private lateinit var batch:TextView
     private lateinit var branch:TextView
     private lateinit var address:TextView
+    private lateinit var editprofile:ImageButton
         override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?
@@ -40,11 +42,17 @@ class ProfileFragment:Fragment(R.layout.fragment_profile) {
             batch = view?.findViewById(R.id.batch_p)!!
             branch = view?.findViewById(R.id.branch_p)!!
             address = view?.findViewById(R.id.address_p)!!
+            editprofile=view?.findViewById(R.id.editprofile)!!
             name.text=NAME
             email.text=com.biswa1045.alumininetwork.EMAIL
             batch.text=com.biswa1045.alumininetwork.BATCH+" - Batch"
             branch.text=com.biswa1045.alumininetwork.BRANCH
             address.text=com.biswa1045.alumininetwork.ADDRESS
+
+            editprofile.setOnClickListener {
+             //   startActivity(Intent(this, editprofile::class.java))
+
+            }
 
         }
 

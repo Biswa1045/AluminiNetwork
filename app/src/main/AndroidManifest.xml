@@ -16,6 +16,13 @@
         android:theme="@style/Theme.AluminiNetwork"
         tools:targetApi="31">
         <activity
+            android:name=".ManagePost"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".clubs"
             android:exported="false">
             <meta-data

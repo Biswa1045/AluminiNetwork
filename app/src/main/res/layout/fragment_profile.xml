@@ -18,11 +18,11 @@
 
         <ImageButton
             android:id="@+id/editprofile"
-            android:layout_width="40dp"
+            android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_gravity="right"
             android:src="@drawable/ic_baseline_edit_24"
-            android:paddingRight="10dp"
+            android:background="@color/blue"
             android:layout_marginRight="10dp"/>
 
 
