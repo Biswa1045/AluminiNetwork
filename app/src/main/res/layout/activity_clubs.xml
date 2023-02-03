@@ -5,8 +5,34 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     tools:context=".clubs">
-
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        app:cardElevation="10dp"
+        android:layout_height="50dp">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:background="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+            <ImageView
+                android:onClick="back_clubs"
+                android:layout_width="25dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/back"
+                android:layout_marginLeft="15dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Igit Clubs"
+                android:textStyle="bold"
+                android:textSize="20dp"
+                android:textColor="@color/black"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="10dp"/>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
     <ScrollView
+        android:layout_marginTop="50dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -57,237 +83,6 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
                 android:src="@drawable/instalogo">
-
-            </ImageButton>
-
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cardView2"
-                android:layout_width="match_parent"
-                android:layout_height="120dp">
-
-
-                <ImageView
-                    android:id="@+id/imageView5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    tools:srcCompat="@tools:sample/avatars" />
-
-                <TextView
-                    android:id="@+id/textView2"
-                    android:layout_width="280dp"
-                    android:layout_height="50dp"
-                    android:layout_gravity="right"
-                    android:layout_marginLeft="5dp"
-                    android:text="TextView" />
-
-                <TextView
-                    android:layout_width="240dp"
-                    android:layout_height="30dp"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginLeft="60dp"
-                    android:layout_marginTop="55dp" />
-            </androidx.cardview.widget.CardView>
-
-            <ImageButton
-                android:id="@+id/image2"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp">
-
-            </ImageButton>
-
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cardView3"
-                android:layout_width="match_parent"
-                android:layout_height="120dp">
-
-
-                <ImageView
-                    android:id="@+id/imageView6"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    tools:srcCompat="@tools:sample/avatars" />
-
-                <TextView
-                    android:id="@+id/textView3"
-                    android:layout_width="280dp"
-                    android:layout_height="50dp"
-                    android:layout_gravity="right"
-                    android:layout_marginLeft="5dp"
-                    android:text="TextView" />
-
-                <TextView
-                    android:layout_width="240dp"
-                    android:layout_height="30dp"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginLeft="60dp"
-                    android:layout_marginTop="55dp" />
-            </androidx.cardview.widget.CardView>
-
-            <ImageButton
-                android:id="@+id/image3"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp">
-
-            </ImageButton>
-
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cardView4"
-                android:layout_width="match_parent"
-                android:layout_height="120dp">
-
-
-                <ImageView
-                    android:id="@+id/imageView7"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    tools:srcCompat="@tools:sample/avatars" />
-
-                <TextView
-                    android:id="@+id/textView4"
-                    android:layout_width="280dp"
-                    android:layout_height="50dp"
-                    android:layout_gravity="right"
-                    android:layout_marginLeft="5dp"
-                    android:text="TextView" />
-
-                <TextView
-                    android:layout_width="240dp"
-                    android:layout_height="30dp"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginLeft="60dp"
-                    android:layout_marginTop="55dp" />
-            </androidx.cardview.widget.CardView>
-
-            <ImageButton
-                android:id="@+id/image4"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp">
-
-            </ImageButton>
-
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cardView5"
-                android:layout_width="match_parent"
-                android:layout_height="120dp">
-
-                <ImageView
-                    android:id="@+id/imageView8"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    tools:srcCompat="@tools:sample/avatars" />
-
-                <TextView
-                    android:id="@+id/textView5"
-                    android:layout_width="280dp"
-                    android:layout_height="50dp"
-                    android:layout_gravity="right"
-                    android:layout_marginLeft="5dp"
-                    android:text="TextView" />
-
-                <TextView
-                    android:layout_width="240dp"
-                    android:layout_height="30dp"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginLeft="60dp"
-                    android:layout_marginTop="55dp" />
-            </androidx.cardview.widget.CardView>
-
-            <ImageButton
-                android:id="@+id/image5"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp">
-
-            </ImageButton>
-
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cardView6"
-                android:layout_width="match_parent"
-                android:layout_height="120dp">
-
-                <ImageView
-                    android:id="@+id/imageView9"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    tools:srcCompat="@tools:sample/avatars" />
-
-                <TextView
-                    android:id="@+id/textView6"
-                    android:layout_width="280dp"
-                    android:layout_height="50dp"
-                    android:layout_gravity="right"
-                    android:layout_marginLeft="5dp"
-                    android:text="TextView" />
-
-                <TextView
-                    android:layout_width="240dp"
-                    android:layout_height="30dp"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginLeft="60dp"
-                    android:layout_marginTop="55dp" />
-            </androidx.cardview.widget.CardView>
-
-            <ImageButton
-                android:id="@+id/image6"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp">
-
-            </ImageButton>
-
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cardView7"
-                android:layout_width="match_parent"
-                android:layout_height="120dp">
-
-                <ImageView
-                    android:id="@+id/imageView10"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    tools:srcCompat="@tools:sample/avatars" />
-
-                <TextView
-                    android:id="@+id/textView7"
-                    android:layout_width="280dp"
-                    android:layout_height="50dp"
-                    android:layout_gravity="right"
-                    android:layout_marginLeft="5dp"
-                    android:text="TextView" />
-
-                <TextView
-                    android:layout_width="240dp"
-                    android:layout_height="30dp"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginLeft="60dp"
-                    android:layout_marginTop="55dp" />
-            </androidx.cardview.widget.CardView>
-
-            <ImageButton
-                android:id="@+id/image7"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp">
 
             </ImageButton>
 

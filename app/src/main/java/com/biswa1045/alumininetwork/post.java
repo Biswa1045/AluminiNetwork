@@ -3,9 +3,6 @@ package com.biswa1045.alumininetwork;
 public class post {
     String URL;
     String CAPTION;
-
-    String UPLOADER_IMG;
-    String UPLOADER_NAME;
     String UPLOADER_UID;
     String POST_ID;
     String POST_TIME;
@@ -15,11 +12,9 @@ public class post {
         public post() {
         }
 
-        public post(String URL, String CAPTION, String UPLOADER_IMG, String UPLOADER_NAME, String UPLOADER_UID,String POST_ID,String POST_TIME,String POST_TYPE) {
+        public post(String URL, String CAPTION, String UPLOADER_UID,String POST_ID,String POST_TIME,String POST_TYPE) {
             this.URL = URL;
             this.CAPTION = CAPTION;
-            this.UPLOADER_IMG = UPLOADER_IMG;
-            this.UPLOADER_NAME = UPLOADER_NAME;
             this.UPLOADER_UID = UPLOADER_UID;
             this.POST_ID = POST_ID;
             this.POST_TIME=POST_TIME;
@@ -68,21 +63,7 @@ public class post {
 
 
 
-    public String getUPLOADER_IMG() {
-        return UPLOADER_IMG;
-    }
 
-    public void setUPLOADER_IMG(String UPLOADER_IMG) {
-        this.UPLOADER_IMG = UPLOADER_IMG;
-    }
-
-    public String getUPLOADER_NAME() {
-        return UPLOADER_NAME;
-    }
-
-    public void setUPLOADER_NAME(String UPLOADER_NAME) {
-        this.UPLOADER_NAME = UPLOADER_NAME;
-    }
 
     public String getUPLOADER_UID() {
         return UPLOADER_UID;

@@ -55,7 +55,7 @@
     <Button
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/cornor_btn"
+        android:backgroundTint="@color/blue"
         android:fontFamily="@font/actor"
         android:layout_alignParentBottom="true"
         android:textColor="@color/white"

@@ -8,11 +8,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageButton
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
 
 
@@ -22,7 +23,8 @@ class ProfileFragment:Fragment(R.layout.fragment_profile) {
     private lateinit var batch:TextView
     private lateinit var branch:TextView
     private lateinit var address:TextView
-    private lateinit var editprofile:ImageButton
+    private lateinit var profile_img:ImageView
+    private lateinit var edit:LinearLayout
         override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?
@@ -42,20 +44,22 @@ class ProfileFragment:Fragment(R.layout.fragment_profile) {
             batch = view?.findViewById(R.id.batch_p)!!
             branch = view?.findViewById(R.id.branch_p)!!
             address = view?.findViewById(R.id.address_p)!!
-            editprofile=view?.findViewById(R.id.editprofile)!!
+            edit = view?.findViewById(R.id.edit_activity)!!
+            profile_img =  view?.findViewById(R.id.profile_img)!!
+            edit.setOnClickListener {
+                val intent = Intent(context, editprofile::class.java)
+                startActivity(intent)
+            }
             name.text=NAME
             email.text=com.biswa1045.alumininetwork.EMAIL
             batch.text=com.biswa1045.alumininetwork.BATCH+" - Batch"
             branch.text=com.biswa1045.alumininetwork.BRANCH
             address.text=com.biswa1045.alumininetwork.ADDRESS
-
-            editprofile.setOnClickListener {
-             //   startActivity(Intent(this, editprofile::class.java))
-
-            }
-
+            Glide.with(requireContext()).load(com.biswa1045.alumininetwork.PHOTO)
+                .centerCrop()
+                .error(R.drawable.person)
+                .into(profile_img)
         }
-
 
     private fun showpopup_logout(){
         val dialog = Dialog(requireContext())
@@ -74,4 +78,6 @@ class ProfileFragment:Fragment(R.layout.fragment_profile) {
         dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         dialog.show()
     }
+
+
 }

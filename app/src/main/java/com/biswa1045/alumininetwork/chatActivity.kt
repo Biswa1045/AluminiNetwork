@@ -1,8 +1,10 @@
 package com.biswa1045.alumininetwork
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
@@ -104,5 +106,9 @@ class chatActivity : AppCompatActivity() {
                 )
             }
         }
+    }
+
+    fun back_chat(view: View) {
+        startActivity(Intent(applicationContext, ChatListActivity::class.java))
     }
 }

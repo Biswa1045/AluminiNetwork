@@ -44,6 +44,8 @@
         android:layout_alignParentBottom="true"
         android:id="@+id/butt"
         android:layout_width="286dp"
+        android:clickable="true"
+        android:focusable="true"
         android:layout_height="60dp"
         android:fontFamily="@font/actor"
         android:text="verify"

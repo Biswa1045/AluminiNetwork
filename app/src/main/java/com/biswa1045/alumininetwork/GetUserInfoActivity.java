@@ -36,6 +36,7 @@ import java.util.Map;
     private  static final String KEY_BRANCH="BRANCH";
     private  static final String KEY_ADD="ADDRESS";
     private  static final String KEY_SPE="SPECIALISATION";
+      private  static final String KEY_PHOTO="PHOTO";
 
     private FirebaseFirestore db= FirebaseFirestore.getInstance();
     EditText name;
@@ -77,9 +78,7 @@ String[] year_arr={"1980","1981","1982","1983","1984","1985","1986","1987","1988
                 ((TextView) parent.getChildAt(0)).setTextColor(Color.WHITE);
                  branch_spn=parent.getItemAtPosition(position).toString();
 
-
             }
-
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
 
@@ -95,8 +94,6 @@ String[] year_arr={"1980","1981","1982","1983","1984","1985","1986","1987","1988
                 batch_spn=parent.getItemAtPosition(position).toString();
 
             }
-
-
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
 
@@ -113,7 +110,6 @@ String[] year_arr={"1980","1981","1982","1983","1984","1985","1986","1987","1988
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 String NAME=name.getText().toString();
                 String EMAIL=gmail.getText().toString();
                 String ADDRESS=address.getText().toString();
@@ -128,6 +124,7 @@ String[] year_arr={"1980","1981","1982","1983","1984","1985","1986","1987","1988
                     note.put(KEY_BATCH,BATCH);
                     note.put(KEY_BRANCH,BRANCH);
                     note.put(KEY_GENDER,GENDER);
+                    note.put(KEY_PHOTO,"EMPTY");
                     String uid = firebaseUser.getUid().toString();
                     db.collection("User").document(uid).set(note)
                             .addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -152,10 +149,6 @@ String[] year_arr={"1980","1981","1982","1983","1984","1985","1986","1987","1988
 
             }
         });
-
-
-
-
         }
     }
 //}

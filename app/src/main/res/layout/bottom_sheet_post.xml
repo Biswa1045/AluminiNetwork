@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:layout_gravity="bottom"
+<androidx.cardview.widget.CardView android:layout_gravity="bottom"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:background="@color/background"
+    app:cardElevation="10dp"
+    android:backgroundTint="@color/white"
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:elevation="15dp"
@@ -23,8 +24,9 @@
             >
             <androidx.cardview.widget.CardView
                 android:id="@+id/post_image"
-                android:foreground="?android:attr/selectableItemBackground"
                 android:clickable="true"
+                android:focusable="true"
+                android:background="@drawable/ripple"
                 android:layout_gravity="center_horizontal"
                 android:layout_width="65dp"
                 android:layout_height="65dp"
@@ -53,6 +55,7 @@
 
         </LinearLayout>
         <LinearLayout
+            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
@@ -90,4 +93,4 @@
         </LinearLayout>
     </LinearLayout>
 
-</LinearLayout>
+</androidx.cardview.widget.CardView>

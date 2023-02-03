@@ -26,6 +26,7 @@ lateinit var CURRENT_POSITION:String
 lateinit var ADDRESS:String
 lateinit var BATCH:String
 lateinit var BRANCH:String
+lateinit var PHOTO:String
 var mlist: ArrayList<post> = ArrayList()
 lateinit var bottomNavigationView:BottomNavigationView
 lateinit var ex:TextView
@@ -82,6 +83,7 @@ class MainActivity : AppCompatActivity() {
             commit()
         }
     private fun profile_data(){
+        try{
         val docRef: DocumentReference? = db?.collection("User")?.document(firebaseUser!!.uid)
         docRef!!.get().addOnCompleteListener { task ->
             if (task.isSuccessful) {
@@ -94,18 +96,23 @@ class MainActivity : AppCompatActivity() {
                     ADDRESS = document.getString("ADDRESS").toString()
                     GENDER = document.getString("GENDER").toString()
                     CURRENT_POSITION = document.getString("CURRENT_POSITION").toString()
-                   // data(NAME,EMAIL,BATCH,BRANCH, ADDRESS, GENDER)
+                    PHOTO = document.getString("PHOTO").toString()
                 }
             } else {
                 Log.d("LOGGER", "get failed with ", task.exception
                 )
             }
         }
+        }catch (e:Exception){
+        Toast.makeText(this, ""+e, Toast.LENGTH_SHORT).show();
     }
+    }
+
     override fun onBackPressed() {
         finishAffinity()
     }
     private fun post(){
+        try{
         //database
         mlist.clear()
         var url:String=""
@@ -122,15 +129,14 @@ class MainActivity : AppCompatActivity() {
                 for (ds in snapshot.children) {
                      url= ds.child("Post_url").getValue(String::class.java).toString()
                      caption= ds.child("Caption").getValue(String::class.java).toString()
-                     profile_img= ds.child("Uploader_img").getValue(String::class.java).toString()
-                     profile_name= ds.child("Uploader_name").getValue(String::class.java).toString()
+                  //   profile_img= ds.child("Uploader_img").getValue(String::class.java).toString()
+                  //   profile_name= ds.child("Uploader_name").getValue(String::class.java).toString()
                      uploader_uid= ds.child("Uploader_uid").getValue(String::class.java).toString()
                      post_id= ds.child("Post_id").getValue(String::class.java).toString()
                      post_time= ds.child("Post_time").getValue(String::class.java).toString()
                     post_type= ds.child("Post_type").getValue(String::class.java).toString()
-                    mlist.add(post(url,caption,profile_img,profile_name,uploader_uid,post_id,post_time,post_type))
+                    mlist.add(post(url,caption,uploader_uid,post_id,post_time,post_type))
                 }
-
 
                 setCurrentFragment(homeFragment)
              //   Toast.makeText(this@MainActivity, mlist.toString(), Toast.LENGTH_SHORT).show()
@@ -141,6 +147,8 @@ class MainActivity : AppCompatActivity() {
             }
         })
 
-
+    }catch (e:Exception){
+        Toast.makeText(this, ""+e, Toast.LENGTH_SHORT).show();
+    }
     }
 }

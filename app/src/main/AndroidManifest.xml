@@ -23,6 +23,13 @@
                 android:value="" />
         </activity>
         <activity
+            android:name=".AluminiActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".clubs"
             android:exported="false">
             <meta-data
@@ -85,13 +92,6 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".ClubsActivity"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
             android:name=".PassoutBatchActivity"
             android:exported="false">
             <meta-data
@@ -99,22 +99,30 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".EditProfileActivity"
+            android:name=".UserActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".UploadVideoActivity"
+            android:name=".editprofile"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".MobileActivity"
+            android:name=".ChatListActivity"
             android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".chatActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />

@@ -12,29 +12,35 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:id="@+id/progress_circular_bar"/>
-    <LinearLayout
-        android:orientation="horizontal"
-        android:background="@color/white"
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="55sp">
-        <ImageView
-            android:onClick="back_chat_list"
-            android:layout_width="25dp"
-            android:layout_height="match_parent"
-            android:src="@drawable/back"
-            android:layout_marginLeft="15dp"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Chats"
-            android:textStyle="bold"
-            android:textSize="20dp"
-            android:textColor="@color/black"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="10dp"/>
+        app:cardElevation="10dp"
+        android:layout_height="50dp">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:background="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+            <ImageView
+                android:onClick="back_chat_list"
+                android:layout_width="25dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/back"
+                android:layout_marginLeft="15dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Chats"
+                android:textStyle="bold"
+                android:textSize="20dp"
+                android:textColor="@color/black"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="10dp"/>
 
 
-    </LinearLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
 
 <androidx.recyclerview.widget.RecyclerView
     android:layout_marginTop="55dp"

@@ -6,55 +6,63 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     tools:context=".chatActivity">
-    <RelativeLayout
+
+    <androidx.cardview.widget.CardView
+        android:backgroundTint="@color/white"
+        android:elevation="10dp"
         android:layout_width="match_parent"
         android:layout_height="55dp"
-        android:orientation="horizontal">
+       >
+
         <ImageView
+            android:onClick="back_chat"
             android:layout_width="25dp"
             android:layout_height="match_parent"
-            android:src="@drawable/back"
-            android:layout_marginLeft="10dp"/>
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/back" />
+
         <RelativeLayout
             android:layout_width="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginLeft="30dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="40dp"
             android:gravity="center_vertical"
-            android:layout_height="match_parent">
+            android:orientation="vertical">
+
             <TextView
+                android:id="@+id/name_chat"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:fontFamily="@font/actor"
+                android:text="User_Name"
                 android:textColor="@color/black"
                 android:textSize="20dp"
-                android:id="@+id/name_chat"
-                android:textStyle="bold"
-                android:fontFamily="@font/actor"
-                android:text="Sujit Sahu"
-                android:layout_marginLeft="10dp"/>
+                android:textStyle="bold" />
+
             <TextView
+                android:id="@+id/details_chat"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_below="@+id/name_chat"
+                android:layout_marginLeft="10dp"
+                android:text=": Student"
                 android:textColor="@color/black"
                 android:textSize="14dp"
-                android:layout_below="@+id/name_chat"
-                android:id="@+id/details_chat"
-                android:textStyle="italic"
-                android:text=": Student"
-                android:layout_marginLeft="10dp"/>
+                android:textStyle="italic" />
 
         </RelativeLayout>
-       <ImageView
-           android:layout_width="25dp"
-           android:layout_height="match_parent"
-           android:src="@drawable/send"
-           android:layout_alignParentRight="true"
-           android:layout_marginRight="15dp"/>
-    </RelativeLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
     <androidx.recyclerview.widget.RecyclerView
+        app:stackFromEnd="true"
+        app:reverseLayout="true"
         android:layout_marginTop="55dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/chat_rec"
+        android:layout_marginBottom="10dp"
         android:layout_above="@+id/l1" />
     <View
         android:layout_above="@+id/l1"
@@ -90,7 +98,7 @@
                 android:hint="Enter message..."
                 android:fontFamily="@font/actor"
                 android:textColorHint="#80000000"
-                android:inputType="textVisiblePassword"/>
+               android:inputType="textMultiLine"/>
         </androidx.cardview.widget.CardView>
         <ImageView
             android:layout_width="match_parent"

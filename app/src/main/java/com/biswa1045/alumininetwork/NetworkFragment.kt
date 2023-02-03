@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
+import androidx.cardview.widget.CardView
 import androidx.fragment.app.Fragment
 
 
@@ -25,10 +26,16 @@ class NetworkFragment: Fragment(R.layout.fragment_network) {
 
     override fun onViewCreated(itemView: View, savedInstanceState: Bundle?) {
         super.onViewCreated(itemView, savedInstanceState)
+        itemView.findViewById<CardView>(R.id.clubs).setOnClickListener {
+            startActivity(Intent(context, clubs::class.java))
 
+        }
 
 
     }
+
+
+
 
 
 

@@ -15,17 +15,6 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:background="@color/background">
-
-        <ImageButton
-            android:id="@+id/editprofile"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_gravity="right"
-            android:src="@drawable/ic_baseline_edit_24"
-            android:background="@color/blue"
-            android:layout_marginRight="10dp"/>
-
-
         <androidx.cardview.widget.CardView
             android:layout_width="95dp"
             android:layout_height="95dp"
@@ -33,6 +22,10 @@
             android:layout_marginTop="30dp"
             app:cardCornerRadius="75dp">
             <ImageView
+                android:clickable="true"
+                android:focusable="true"
+                android:background="@drawable/ripple"
+                android:id="@+id/profile_img"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="centerCrop"
@@ -65,9 +58,12 @@
             android:background="@color/foreground">
         </LinearLayout>
         <LinearLayout
-            android:layout_marginHorizontal="15dp"
+            android:paddingHorizontal="15dp"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="50dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="@drawable/ripple"
             android:orientation="horizontal">
             <ImageView
                 android:layout_width="wrap_content"
@@ -93,9 +89,12 @@
             android:background="@android:color/darker_gray"/>
         <LinearLayout
             android:layout_marginTop="10dp"
-            android:layout_marginHorizontal="15dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="@drawable/ripple"
+            android:paddingHorizontal="15dp"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="50dp"
             android:orientation="horizontal">
             <ImageView
                 android:layout_width="wrap_content"
@@ -120,10 +119,13 @@
             android:layout_marginHorizontal="15dp"
             android:background="@android:color/darker_gray"/>
         <LinearLayout
+            android:clickable="true"
+            android:focusable="true"
+            android:background="@drawable/ripple"
             android:layout_marginTop="10dp"
-            android:layout_marginHorizontal="15dp"
+            android:paddingHorizontal="15dp"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="50dp"
             android:orientation="horizontal">
             <ImageView
                 android:layout_width="wrap_content"
@@ -150,10 +152,13 @@
             android:layout_marginHorizontal="15dp"
             android:background="@android:color/darker_gray"/>
         <LinearLayout
+            android:clickable="true"
+            android:focusable="true"
+            android:background="@drawable/ripple"
             android:layout_marginTop="10dp"
-            android:layout_marginHorizontal="15dp"
+            android:paddingHorizontal="15dp"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="50dp"
             android:orientation="horizontal">
             <ImageView
                 android:layout_width="wrap_content"
@@ -190,7 +195,7 @@
             <LinearLayout
                 android:clickable="true"
                 android:focusable="true"
-                android:background="?attr/selectableItemBackground"
+                android:background="@drawable/ripple"
                 android:layout_marginTop="5dp"
                 android:id="@+id/activity_profile"
                 android:paddingHorizontal="15dp"
@@ -233,11 +238,59 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="@android:color/darker_gray"/>
+
+        <LinearLayout
+
+            android:id="@+id/edit_activity"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="@drawable/ripple"
+            android:layout_marginTop="5dp"
+            android:paddingHorizontal="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/ic_dashboard_black_24dp"
+                android:backgroundTint="@color/black"/>
+            <LinearLayout
+                android:gravity="center_vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Edit Profile"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="20dp"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/actor"
+                    android:textColor="@color/black"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Edit your information"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="20dp"
+                    android:textSize="14dp"
+                    android:fontFamily="@font/actor"
+                    android:textColor="@color/black"/>
+            </LinearLayout>
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray"/>
         <LinearLayout
             android:id="@+id/spam_activity"
             android:clickable="true"
             android:focusable="true"
-            android:background="?attr/selectableItemBackground"
+            android:background="@drawable/ripple"
             android:layout_marginTop="5dp"
             android:paddingHorizontal="15dp"
             android:layout_width="match_parent"
@@ -280,10 +333,11 @@
             android:layout_height="1dp"
             android:background="@android:color/darker_gray"/>
         <LinearLayout
+
             android:id="@+id/privacy_profile"
             android:clickable="true"
             android:focusable="true"
-            android:background="?attr/selectableItemBackground"
+            android:background="@drawable/ripple"
             android:layout_marginTop="5dp"
             android:paddingHorizontal="15dp"
             android:layout_width="match_parent"
@@ -332,7 +386,7 @@
             android:id="@+id/logout_l"
             android:clickable="true"
             android:focusable="true"
-            android:background="?attr/selectableItemBackground"
+            android:background="@drawable/ripple"
             android:layout_marginTop="5dp"
             android:paddingHorizontal="15dp"
             android:layout_width="match_parent"

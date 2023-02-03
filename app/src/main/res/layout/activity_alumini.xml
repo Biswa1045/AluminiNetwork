@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AluminiActivity">
+<androidx.cardview.widget.CardView
+    android:layout_width="match_parent"
+    android:layout_height="60dp"
+    android:elevation="10dp"
+    >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/back"
+            android:layout_marginLeft="10dp"/>
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginVertical="10dp"
+            app:cardCornerRadius="10dp"
+            android:backgroundTint="#D3E0EF"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="55dp">
+            <EditText
+                android:layout_margin="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="16dp"
+                android:textColor="@color/black"
+                android:background="@null"
+                android:hint="Search People"
+                android:textStyle="bold"
+                />
+        </androidx.cardview.widget.CardView>
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:src="@drawable/home"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"/>
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>
+</RelativeLayout>

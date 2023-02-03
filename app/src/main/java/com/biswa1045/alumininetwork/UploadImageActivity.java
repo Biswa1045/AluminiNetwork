@@ -171,8 +171,6 @@ public class UploadImageActivity extends AppCompatActivity {
                                                             Map<String,Object> data = new HashMap<>();
                                                             data.put("Post_url",firebase_img_uri);
                                                             data.put("Uploader_uid",firebaseUser.getUid().toString());
-                                                            data.put("Uploader_img","q");
-                                                            data.put("Uploader_name",name);
                                                             data.put("Caption",caption.getText().toString());
                                                             data.put("Post_id",databaseReference_id);
                                                             data.put("Post_time",dayString+" "+monthString+" "+yearString);

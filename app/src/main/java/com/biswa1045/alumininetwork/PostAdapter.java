@@ -23,6 +23,9 @@ import java.util.List;
 import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
 
 import com.bumptech.glide.Glide;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -30,11 +33,15 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.auth.User;
 
 public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
     FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
     FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+    String NAME,EMAIL,BRANCH,BATCH,ADDRESS,GENDER,CURRENT_POSITION,PHOTO;
     List<post> itemList;
     private Context context;
 
@@ -56,20 +63,40 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull PostAdapter.ViewHolder holder, final int position) {
 
+        DocumentReference docRef= FirebaseFirestore.getInstance().collection("User").document(itemList.get(position).getUPLOADER_UID());
+        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                        if(task.isSuccessful()){
+                            NAME = task.getResult().getString("NAME").toString();
+                         //   EMAIL = task.getResult().getString("EMAIL").toString();
+                         //   BRANCH = task.getResult().getString("BRANCH").toString();
+                          //  BATCH = task.getResult().getString("PASSOUT BATCH").toString();
+                          //  ADDRESS = task.getResult().getString("ADDRESS").toString();
+                          //  GENDER = task.getResult().getString("GENDER").toString();
+                         //   CURRENT_POSITION = task.getResult().getString("CURRENT_POSITION").toString();
+                            PHOTO = task.getResult().getString("PHOTO").toString();
+                            holder.uploader_name.setText(NAME);
+                            Glide.with(context).load(PHOTO)
+                                    .centerCrop()
+                                    .error(R.drawable.person)
+                                    .into(holder.profileimg);
+                        }
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+
+                    }
+                });
         String post_url_s = itemList.get(position).getURL();
-        String uploader_img_s = itemList.get(position).getUPLOADER_IMG();
         String post_type_s = itemList.get(position).getPOST_TYPE();
         String post_time_s = itemList.get(position).getPOST_TIME();
-        String uploader_name_s = itemList.get(position).getUPLOADER_NAME();
         String post_id = itemList.get(position).getPOST_ID();
-        holder.uploader_name.setText(uploader_name_s);
         holder.time.setText(post_time_s);
         holder.caption.setText(itemList.get(position).getCAPTION());
 
-        Glide.with(context).load(itemList.get(position).getUPLOADER_IMG())
-                .centerCrop()
-                .error(R.drawable.person)
-                .into(holder.profileimg);
         if(post_type_s.equals("video")){
             holder.post_video.setVisibility(View.VISIBLE);
             holder.post.setVisibility(View.GONE);
@@ -233,4 +260,9 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
 
 
     }*/
+    private void User_profile_data(String uid){
+
+
+
+    }
 }
