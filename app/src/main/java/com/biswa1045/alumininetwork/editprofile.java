@@ -195,7 +195,8 @@ try {
                         note.put(KEY_ID,uid);
                         note.put("PHOTO", PHOTO_PROFILE +"");
 
-                        db.collection("User").document(uid).set(note)
+                        db.collection("User").document(uid)
+                                .update("search",NAME.toLowerCase())
                                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                                     @Override
                                     public void onSuccess(Void unused) {

@@ -26,18 +26,9 @@
             app:cardCornerRadius="10dp"
             android:backgroundTint="#D3E0EF"
             android:layout_marginLeft="50dp"
-            android:layout_marginRight="55dp">
-            <EditText
-                android:layout_margin="5dp"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:textSize="16dp"
-                android:textColor="@color/black"
-                android:background="@null"
-                android:hint="Search People"
-                android:textStyle="bold"
-                />
-        </androidx.cardview.widget.CardView>
+            android:layout_marginRight="55dp"
+
+            />
         <ImageView
             android:layout_width="20dp"
             android:layout_height="match_parent"

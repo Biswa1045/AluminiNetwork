@@ -37,6 +37,7 @@ import java.util.Map;
     private  static final String KEY_ADD="ADDRESS";
     private  static final String KEY_SPE="SPECIALISATION";
       private  static final String KEY_PHOTO="PHOTO";
+      private  static final String KEY_SEARCH="";
 
     private FirebaseFirestore db= FirebaseFirestore.getInstance();
     EditText name;
@@ -119,6 +120,7 @@ String[] year_arr={"1980","1981","1982","1983","1984","1985","1986","1987","1988
                 if(!NAME.equals("") &&!EMAIL.equals("") && !ADDRESS.equals("") && GENDER != null &&!BATCH.equals("") &&!BRANCH.equals("") ){
                     Map<String,Object> note=new HashMap<>();
                     note.put(KEY_NAME,NAME);
+                    note.put(KEY_SEARCH,NAME.toLowerCase());
                     note.put(KEY_EMAIL,EMAIL);
                     note.put(KEY_ADD,ADDRESS);
                     note.put(KEY_BATCH,BATCH);
@@ -127,6 +129,7 @@ String[] year_arr={"1980","1981","1982","1983","1984","1985","1986","1987","1988
                     note.put(KEY_PHOTO,"EMPTY");
                     String uid = firebaseUser.getUid().toString();
                     db.collection("User").document(uid).set(note)
+
                             .addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void unused) {
