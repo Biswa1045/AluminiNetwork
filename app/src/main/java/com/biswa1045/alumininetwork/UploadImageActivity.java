@@ -145,7 +145,9 @@ public class UploadImageActivity extends AppCompatActivity {
             String yearString = year.format(cal.getTime());
             firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
             storageReference = FirebaseStorage.getInstance().getReference();
-            StorageReference ref = storageReference.child("posts").child(firebaseUser.getUid()+"_"+currentDateandTime+".jpg");
+            String databaseReference_id= FirebaseDatabase.getInstance().getReference("Post").push().getKey();
+
+            StorageReference ref = storageReference.child("posts").child(firebaseUser.getUid()+"_"+databaseReference_id+".jpg");
             ref.putFile(imguri_crped).addOnSuccessListener(
                             new OnSuccessListener<UploadTask.TaskSnapshot>() {
                                 @Override
@@ -165,7 +167,6 @@ public class UploadImageActivity extends AppCompatActivity {
                                                             firebase_img_uri = uri.toString();
                                                             //count existing posts
                                                             //upload url in next count
-                                                            String databaseReference_id= FirebaseDatabase.getInstance().getReference("Post").push().getKey();
                                                             assert databaseReference_id != null;
                                                             DatabaseReference databaseReference= FirebaseDatabase.getInstance().getReference("Post").child(databaseReference_id);
                                                             Map<String,Object> data = new HashMap<>();

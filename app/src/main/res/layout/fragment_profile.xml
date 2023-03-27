@@ -193,6 +193,7 @@
             android:textStyle="bold"
             android:layout_marginLeft="15dp"/>
             <LinearLayout
+
                 android:clickable="true"
                 android:focusable="true"
                 android:background="@drawable/ripple"

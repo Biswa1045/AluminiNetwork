@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout
+
+        android:layout_width="match_parent"
+
+        android:background="@color/black"
+        android:layout_gravity="center"
+        android:layout_height="fill_parent">
+        <RelativeLayout
+            android:id="@+id/r1"
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+            <ImageView
+                android:id="@+id/image_dialog_back"
+                android:layout_width="35dp"
+                android:layout_height="28dp"
+                android:src="@drawable/ic_baseline_arrow_back_24"/>
+            <LinearLayout
+                android:gravity="center_horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <androidx.cardview.widget.CardView
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    app:cardCornerRadius="28dp"
+                    >
+                    <ImageView
+                        android:id="@+id/uploader_img"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/person"/>
+
+                </androidx.cardview.widget.CardView>
+                <TextView
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:id="@+id/uploader_name"
+                    android:textSize="14dp"
+                    android:text="Biswajit Sahu"
+                    />
+            </LinearLayout>
+        </RelativeLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/r1"
+            android:layout_marginBottom="50dp"
+            android:background="@color/black"
+            android:layout_marginTop="5dp"
+            >
+            <ImageView
+                android:id="@+id/image_click"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@color/foreground" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:text=""
+            android:id="@+id/caption_uploader"
+            android:textColor="@color/white"
+            android:textSize="14dp"
+            android:layout_alignParentBottom="true"/>
+
+    </RelativeLayout>
+</LinearLayout>

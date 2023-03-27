@@ -1,5 +1,4 @@
 package com.biswa1045.alumininetwork
-
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -18,7 +17,6 @@ import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.StorageReference
 import java.util.ArrayList
-
 lateinit var NAME:String
 lateinit var EMAIL:String
 lateinit var GENDER:String
@@ -35,12 +33,10 @@ private var db: FirebaseFirestore? = FirebaseFirestore.getInstance()
 var storageReference: StorageReference? = null
 var mRef: DatabaseReference? = null
 lateinit var homeFragment:Fragment
-
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
         homeFragment=HomeFragment()
         val profileFragment=ProfileFragment()
         val networkFragment=NetworkFragment()
@@ -77,7 +73,7 @@ class MainActivity : AppCompatActivity() {
             finish()
         }
     }
-    private fun setCurrentFragment(fragment: Fragment)=
+     fun setCurrentFragment(fragment: Fragment)=
         supportFragmentManager.beginTransaction().apply {
             replace(R.id.flFragment,fragment)
             commit()

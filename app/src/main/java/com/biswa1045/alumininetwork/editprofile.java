@@ -265,10 +265,8 @@ try {
         options.setToolbarTitle("cropping");
         return options;
     }
-
     private void SelectImage()
     {
-
         // Defining Implicit Intent to mobile gallery
         Intent intent = new Intent();
         intent.setType("image/*");

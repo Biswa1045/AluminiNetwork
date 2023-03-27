@@ -38,7 +38,7 @@
                 android:fontFamily="@font/actor"
                 android:layout_height="wrap_content"
                 android:textSize="24dp"
-                android:text="Biswajit Sahu"
+                android:text="Name"
                 android:id="@+id/name_user"
                 android:textAlignment="center"
                 android:layout_marginTop="15dp"
@@ -142,7 +142,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="biswajitsahu1045@gmail.com"
+                    android:text="email@gmail.com"
                     android:id="@+id/email_user"
                     android:fontFamily="@font/actor"
                     android:layout_gravity="center_vertical"
@@ -240,7 +240,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Titilagarh,Odisha"
+                    android:text=""
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="20dp"
                     android:id="@+id/address_user"

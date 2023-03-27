@@ -14,26 +14,18 @@ import androidx.cardview.widget.CardView
 import androidx.fragment.app.Fragment
 
 
-class NetworkFragment: Fragment(R.layout.fragment_network) {
+class ImageViewFragment: Fragment(R.layout.fragment_image_view) {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
 
-        return inflater.inflate(R.layout.fragment_network, container, false)
+        return inflater.inflate(R.layout.fragment_image_view, container, false)
     }
 
     override fun onViewCreated(itemView: View, savedInstanceState: Bundle?) {
         super.onViewCreated(itemView, savedInstanceState)
-        itemView.findViewById<CardView>(R.id.clubs).setOnClickListener {
-            startActivity(Intent(context, clubs::class.java))
-
-        }
-        itemView.findViewById<CardView>(R.id.alumini_network).setOnClickListener {
-            startActivity(Intent(context, AluminiActivity::class.java))
-
-        }
 
 
     }

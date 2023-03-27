@@ -25,6 +25,7 @@ class ProfileFragment:Fragment(R.layout.fragment_profile) {
     private lateinit var address:TextView
     private lateinit var profile_img:ImageView
     private lateinit var edit:LinearLayout
+    private lateinit var activity_profile:LinearLayout
         override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?
@@ -38,7 +39,7 @@ class ProfileFragment:Fragment(R.layout.fragment_profile) {
             view?.findViewById<LinearLayout>(R.id.logout_l)?.setOnClickListener{
                 showpopup_logout()
             }
-
+            activity_profile = view?.findViewById(R.id.activity_profile)!!
             name = view?.findViewById(R.id.name_p)!!
             email = view?.findViewById(R.id.email_p)!!
             batch = view?.findViewById(R.id.batch_p)!!
@@ -50,7 +51,11 @@ class ProfileFragment:Fragment(R.layout.fragment_profile) {
                 val intent = Intent(context, editprofile::class.java)
                 startActivity(intent)
             }
-            name.text=NAME
+            activity_profile.setOnClickListener {
+                val intent = Intent(context, ManagePostsActivity::class.java)
+                startActivity(intent)
+            }
+            name.text=com.biswa1045.alumininetwork.NAME
             email.text=com.biswa1045.alumininetwork.EMAIL
             batch.text=com.biswa1045.alumininetwork.BATCH+" - Batch"
             branch.text=com.biswa1045.alumininetwork.BRANCH
@@ -78,6 +83,10 @@ class ProfileFragment:Fragment(R.layout.fragment_profile) {
         dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         dialog.show()
     }
+
+
+
+
 
 
 }

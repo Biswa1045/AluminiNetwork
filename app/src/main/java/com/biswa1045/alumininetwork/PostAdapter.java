@@ -1,26 +1,24 @@
 package com.biswa1045.alumininetwork;
 
+import android.app.Dialog;
+import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
-import android.media.Image;
-import android.net.Uri;
-import android.view.Display;
+import android.graphics.drawable.ColorDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.MediaController;
 import android.widget.TextView;
 import android.widget.VideoView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
-
-import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
 
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -36,7 +34,6 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.auth.User;
 
 public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
     FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
@@ -44,6 +41,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
     String NAME,EMAIL,BRANCH,BATCH,ADDRESS,GENDER,CURRENT_POSITION,PHOTO;
     List<post> itemList;
     private Context context;
+    Dialog dialog;
 
     public PostAdapter(List<post> itemList,Context context) {
 
@@ -62,7 +60,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull PostAdapter.ViewHolder holder, final int position) {
-
+        dialog=new Dialog(context);
         DocumentReference docRef= FirebaseFirestore.getInstance().collection("User").document(itemList.get(position).getUPLOADER_UID());
         docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                     @Override
@@ -109,9 +107,55 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
             holder.post_video.setVisibility(View.GONE);
             holder.post.setVisibility(View.VISIBLE);
             Glide.with(context).load(post_url_s)
-                    .centerCrop()
+                    .fitCenter()
                     .into(holder.post);
         }
+        holder.post.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.setContentView(R.layout.imageview_dialog);
+                dialog.setCancelable(false);
+                ImageView image_dialog_back;
+                ImageView img;
+                ImageView uploader_img;
+                TextView uploader_name;
+                TextView caption;
+                image_dialog_back = dialog.findViewById(R.id.image_dialog_back);
+                img = dialog.findViewById(R.id.image_click);
+                uploader_img = dialog.findViewById(R.id.uploader_img);
+                uploader_name = dialog.findViewById(R.id.uploader_name);
+                caption = dialog.findViewById(R.id.caption_uploader);
+                image_dialog_back.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        dialog.dismiss();
+                    }
+                });
+                Glide.with(context).load(post_url_s)
+                        .error(R.drawable.ic_launcher_background)
+                        .into(img);
+                Glide.with(context).load(PHOTO)
+                        .centerCrop()
+                        .error(R.drawable.ic_launcher_background)
+                        .into(uploader_img);
+                uploader_name.setText(NAME);
+                caption.setText(itemList.get(position).getCAPTION());
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+                dialog.show();
+            }
+        });
+
+      /*  holder.post.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AppCompatActivity activity = (AppCompatActivity) view.getContext();
+                com.biswa1045.alumininetwork.ImageViewFragment myFragment = new ImageViewFragment();
+                activity.getSupportFragmentManager().beginTransaction().replace(R.id.flFragment, myFragment).addToBackStack(null).commit();
+
+
+            }
+        });*/
 
         islikes(post_id,holder.like_img,holder.likes_post);
         nrlikes(holder.likes,post_id);
@@ -175,6 +219,8 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
             likes= itemView.findViewById(R.id.likes);
         }
     }
+
+
     private void islikes(String factid,ImageView imageview,TextView likes_post){
         FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         DatabaseReference databaseReference= FirebaseDatabase.getInstance().getReference("Post_likes").child(factid);
